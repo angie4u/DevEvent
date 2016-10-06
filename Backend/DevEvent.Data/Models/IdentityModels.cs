@@ -83,6 +83,7 @@ namespace DevEvent.Data.Models
             modelBuilder.Entity<Event>().ToTable("Events");
             modelBuilder.Entity<Event>().Property(t => t.Title).IsRequired();
             modelBuilder.Entity<Event>().HasRequired(t => t.CreateUser).WithMany(t => t.Events).HasForeignKey(t => t.CreateUserId);
+            modelBuilder.Entity<Event>().HasMany(t => t.RelatedLinks).WithRequired(t => t.Event).HasForeignKey(t => t.EventId);
 
 
 

@@ -113,15 +113,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201610060613232_Initialize.cs" />
-    <Compile Include="Migrations\201610060613232_Initialize.Designer.cs">
-      <DependentUpon>201610060613232_Initialize.cs</DependentUpon>
+    <Compile Include="Migrations\201610061132196_InitialDb.cs" />
+    <Compile Include="Migrations\201610061132196_InitialDb.Designer.cs">
+      <DependentUpon>201610061132196_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Enums\LinkType.cs" />
     <Compile Include="Models\Enums\PublishState.cs" />
     <Compile Include="Models\Enums\UserRegisterState.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\EventRelatedLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AzureStorageService.cs" />
     <Compile Include="Services\EventService.cs" />
@@ -134,8 +136,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610060613232_Initialize.resx">
-      <DependentUpon>201610060613232_Initialize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610061132196_InitialDb.resx">
+      <DependentUpon>201610061132196_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
