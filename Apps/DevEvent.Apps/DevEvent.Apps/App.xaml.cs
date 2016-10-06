@@ -5,15 +5,21 @@ using System.Text;
 
 using Xamarin.Forms;
 
+using DevEvent.Apps.Pages;
+
 namespace DevEvent.Apps
 {
     public partial class App : Application
     {
+        public static NavigationPage Navigator { get; internal set; }
+        public static MasterPage Master { get; internal set; }
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new DevEvent.Apps.MainPage();
+            MainPage = new DevEvent.Apps.Pages.MasterPage();
+           
         }
 
         protected override void OnStart()
