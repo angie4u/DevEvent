@@ -38,7 +38,7 @@
       </Style>
       <!--DataTemplates-->
 
-      <DataTemplate x:Key="OrderItemTemplate">
+      <DataTemplate x:Key="ShortListTemplate">
         <ViewCell>
 
           <Grid Padding="8">
@@ -53,13 +53,13 @@
                 FontSize="16"
                 VerticalOptions="Center"
                 TextColor="{StaticResource FontColor}"
-                Text="{Binding Title}"></Label>
+                Text="{Binding EventTitle}"></Label>
               <StackLayout Orientation="Horizontal">
 
                 <Label
                   VerticalOptions="Center"
                   TextColor="{StaticResource MainColor}"
-                  Text="{Binding DeliveryDate, StringFormat='{0:yyyy/MM/dd HH:mm}'}"></Label>
+                  Text="{Binding EventStartDay, StringFormat='{0:yyyy/MM/dd HH:mm}'}"></Label>
                 <Label
                   VerticalOptions="Center"
                   TextColor="{StaticResource MainColor}"
@@ -80,7 +80,7 @@
             </StackLayout>
             <Image
                WidthRequest="250" HeightRequest="150" VerticalOptions="Start"
-               Source="{Binding Image}" Grid.Row="1"></Image>
+               Source="{Binding ImageURL}" Grid.Row="1"></Image>
           </Grid>
         </ViewCell>
       </DataTemplate>

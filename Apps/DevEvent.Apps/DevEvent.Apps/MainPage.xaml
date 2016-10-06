@@ -4,8 +4,15 @@
              xmlns:local="clr-namespace:DevEvent.Apps"
              x:Class="DevEvent.Apps.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+  <StackLayout Grid.Row="1" >
+    <ListView
+      SeparatorColor="#52656b"
+      x:Name="MyList"
+      ItemTemplate="{StaticResource OrderItemTemplate}"
+      ItemsSource="{Binding EventList}"
+      ItemSelected="MyListView_ItemSelected"
+      HasUnevenRows="True">
+    </ListView>
+  </StackLayout>
 
 </ContentPage>
