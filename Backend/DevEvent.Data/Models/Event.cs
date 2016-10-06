@@ -15,8 +15,41 @@ namespace DevEvent.Data.Models
         [Key]
         public long Id { get; set; }
 
+        /// <summary>
+        /// 이벤트 타이틀
+        /// </summary>
         [Required]
         public string Title { get; set; }
+
+        /// <summary>
+        /// 이벤트 설명 
+        /// </summary>
+        public string Description { get; set; }
+
+        public DateTimeOffset StartDate { get; set; }
+
+        public DateTimeOffset EndDate { get; set; }
+
+        public string Venue { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
+
+
+        public string Audience { get; set; }
+
+        public string RegistrationUrl { get; set; }
+
+        /// <summary>
+        /// 행사 끝나고 나서 관련된 링크 
+        /// </summary>
+        public string ContentUrl { get; set; }
+
+        public string ThumbnailImageUrl { get; set; }
+
+        public string FeatureImageUrl { get; set; }
+
 
         /// <summary>
         /// 누가 만들었나
