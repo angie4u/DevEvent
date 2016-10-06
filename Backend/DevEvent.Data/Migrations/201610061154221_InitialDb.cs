@@ -12,6 +12,7 @@ namespace DevEvent.Data.Migrations
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
+                        PublishState = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         Description = c.String(storeType: "ntext"),
                         StartDate = c.DateTimeOffset(nullable: false, precision: 7),

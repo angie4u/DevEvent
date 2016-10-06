@@ -1,49 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEvent.Data.Models
+namespace DevEvent.Data.ViewModels
 {
-    public class Event
+    public class EventDetailViewModel
     {
-        /// <summary>
-        /// 이벤트 키 
-        /// </summary>
-        [Key]
         public long Id { get; set; }
-
-        /// <summary>
-        /// 배포(Publish) 
-        /// </summary>
-        public PublishState PublishState { get; set; }
 
         /// <summary>
         /// 이벤트 타이틀
         /// </summary>
-        [Required]
         public string Title { get; set; }
 
         /// <summary>
         /// 이벤트 설명 
         /// 웹 편집기를 이용해서 HTML 로 작성되어 저장됨. 
         /// </summary>
-        [Column(TypeName = "ntext")]
         public string Description { get; set; }
 
         /// <summary>
         /// 시작시각
         /// </summary>
-        [Required]
         public DateTimeOffset StartDate { get; set; }
 
         /// <summary>
         /// 끝나는 시각
         /// </summary>
-        [Required]
         public DateTimeOffset EndDate { get; set; }
 
         /// <summary>
@@ -87,7 +72,6 @@ namespace DevEvent.Data.Models
         /// </summary>
         public string FeatureImageUrl { get; set; }
 
-
         /// <summary>
         /// 누가 만들었나
         /// </summary>
@@ -96,11 +80,8 @@ namespace DevEvent.Data.Models
         /// <summary>
         /// 만든 Admin Nav Prop
         /// </summary>
-        public ApplicationUser CreateUser { get; set; }
+        public string CreateUserName { get; set; }
 
-        /// <summary>
-        /// 관련 링크들
-        /// </summary>
-        public ICollection<EventRelatedLink> RelatedLinks { get; set; }
+        public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
     }
 }

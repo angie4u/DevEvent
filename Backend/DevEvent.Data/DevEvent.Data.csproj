@@ -113,9 +113,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201610061132196_InitialDb.cs" />
-    <Compile Include="Migrations\201610061132196_InitialDb.Designer.cs">
-      <DependentUpon>201610061132196_InitialDb.cs</DependentUpon>
+    <Compile Include="Migrations\201610061154221_InitialDb.cs" />
+    <Compile Include="Migrations\201610061154221_InitialDb.Designer.cs">
+      <DependentUpon>201610061154221_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\LinkType.cs" />
@@ -129,15 +129,17 @@
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\Interface\IEventService.cs" />
     <Compile Include="Services\Interface\IStorageService.cs" />
-    <Compile Include="ViewModels\EventVeiwModel.cs" />
+    <Compile Include="ViewModels\EventDetailViewModel.cs" />
+    <Compile Include="ViewModels\EventListViewModel.cs" />
+    <Compile Include="ViewModels\EventRelatedLinkViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610061132196_InitialDb.resx">
-      <DependentUpon>201610061132196_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610061154221_InitialDb.resx">
+      <DependentUpon>201610061154221_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

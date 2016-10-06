@@ -13,7 +13,7 @@ namespace DevEvent.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201610061132196_InitialDb"; }
+            get { return "201610061154221_InitialDb"; }
         }
         
         string IMigrationMetadata.Source
