@@ -203,6 +203,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminEventController.cs" />
+    <Compile Include="Controllers\AdminPeopleController.cs" />
     <Compile Include="Controllers\api\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
@@ -1030,6 +1032,10 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\AdminPeople\Index.cshtml" />
+    <Content Include="Views\AdminEvent\Index.cshtml" />
+    <Content Include="Views\AdminEvent\Create.cshtml" />
+    <Content Include="Views\AdminEvent\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

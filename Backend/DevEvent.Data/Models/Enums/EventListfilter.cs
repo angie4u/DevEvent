@@ -10,6 +10,7 @@ namespace DevEvent.Data.Models
     {
         Following = 0,
         Former = 1, 
-        All = 2
+        All = 2,
+        My = 3
     }
 }
