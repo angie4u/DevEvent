@@ -2145,7 +2145,7 @@ h5 + .separator {
 }
 
 .cart .product {
-  width: 220px;
+  width: auto;
   font-size: 13px;
 }
 
