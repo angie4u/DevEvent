@@ -73,7 +73,7 @@ namespace DevEvent.Data.Models
         public string Audience { get; set; }
 
         /// <summary>
-        /// 행상 등록 페이지 Url
+        /// 행사 등록 페이지 Url
         /// </summary>
         public string RegistrationUrl { get; set; }
 
@@ -85,7 +85,7 @@ namespace DevEvent.Data.Models
         /// <summary>
         /// 특성이미지, 대표이미지 Url
         /// </summary>
-        public string FeatureImageUrl { get; set; }
+        public string FeaturedImageUrl { get; set; }
 
 
         /// <summary>

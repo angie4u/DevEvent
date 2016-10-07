@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEvent.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,11 +59,6 @@ namespace DevEvent.Data.ViewModels
         public string Audience { get; set; }
 
         /// <summary>
-        /// 행상 등록 페이지 Url
-        /// </summary>
-        public string RegistrationUrl { get; set; }
-
-        /// <summary>
         /// 대표이미지로부터 만든 Thumbnail Image Url
         /// </summary>
         public string ThumbnailImageUrl { get; set; }
@@ -70,7 +66,7 @@ namespace DevEvent.Data.ViewModels
         /// <summary>
         /// 특성이미지, 대표이미지 Url
         /// </summary>
-        public string FeatureImageUrl { get; set; }
+        public string FeaturedImageUrl { get; set; }
 
         /// <summary>
         /// 누가 만들었나
@@ -81,6 +77,13 @@ namespace DevEvent.Data.ViewModels
         /// 만든 Admin Nav Prop
         /// </summary>
         public string CreateUserName { get; set; }
+
+        public PublishState PublishState { get; set; }
+
+        /// <summary>
+        /// 행사 등록 페이지 Url
+        /// </summary>
+        public string RegistrationUrl { get; set; }
 
         public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
     }
