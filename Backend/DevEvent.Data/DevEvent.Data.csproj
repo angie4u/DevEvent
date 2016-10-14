@@ -101,10 +101,12 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,9 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201610061154221_InitialDb.cs" />
-    <Compile Include="Migrations\201610061154221_InitialDb.Designer.cs">
-      <DependentUpon>201610061154221_InitialDb.cs</DependentUpon>
+    <Compile Include="Migrations\201610110632162_InitializeDB.cs" />
+    <Compile Include="Migrations\201610110632162_InitializeDB.Designer.cs">
+      <DependentUpon>201610110632162_InitializeDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\LinkType.cs" />
@@ -130,6 +132,8 @@
     <Compile Include="Models\Enums\EventListFilter.cs" />
     <Compile Include="Services\Interface\IEventService.cs" />
     <Compile Include="Services\Interface\IStorageService.cs" />
+    <Compile Include="Services\Interface\IThumbnailService.cs" />
+    <Compile Include="Services\ThumbnailService.cs" />
     <Compile Include="ViewModels\EventDetailViewModel.cs" />
     <Compile Include="ViewModels\EventListFilterViewModel.cs" />
     <Compile Include="ViewModels\EventListViewModel.cs" />
@@ -140,8 +144,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610061154221_InitialDb.resx">
-      <DependentUpon>201610061154221_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610110632162_InitializeDB.resx">
+      <DependentUpon>201610110632162_InitializeDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

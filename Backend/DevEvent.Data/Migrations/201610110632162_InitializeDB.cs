@@ -3,10 +3,25 @@ namespace DevEvent.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDb : DbMigration
+    public partial class InitializeDB : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.EventRelatedLinks",
+                c => new
+                    {
+                        Id = c.Long(nullable: false, identity: true),
+                        LinkType = c.Int(nullable: false),
+                        Url = c.String(nullable: false),
+                        CreatedTime = c.DateTimeOffset(nullable: false, precision: 7),
+                        Description = c.String(),
+                        EventId = c.Long(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Events", t => t.EventId, cascadeDelete: true)
+                .Index(t => t.EventId);
+            
             CreateTable(
                 "dbo.Events",
                 c => new
@@ -24,7 +39,7 @@ namespace DevEvent.Data.Migrations
                         Audience = c.String(),
                         RegistrationUrl = c.String(),
                         ThumbnailImageUrl = c.String(),
-                        FeatureImageUrl = c.String(),
+                        FeaturedImageUrl = c.String(),
                         CreateUserId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
@@ -101,21 +116,6 @@ namespace DevEvent.Data.Migrations
                 .Index(t => t.IdentityUser_Id);
             
             CreateTable(
-                "dbo.EventRelatedLinks",
-                c => new
-                    {
-                        Id = c.Long(nullable: false, identity: true),
-                        LinkType = c.Int(nullable: false),
-                        Url = c.String(),
-                        CreatedTime = c.DateTimeOffset(nullable: false, precision: 7),
-                        Description = c.String(),
-                        EventId = c.Long(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Events", t => t.EventId, cascadeDelete: true)
-                .Index(t => t.EventId);
-            
-            CreateTable(
                 "dbo.Roles",
                 c => new
                     {
@@ -136,7 +136,6 @@ namespace DevEvent.Data.Migrations
             DropForeignKey("dbo.EventRelatedLinks", "EventId", "dbo.Events");
             DropForeignKey("dbo.Events", "CreateUserId", "dbo.Users");
             DropIndex("dbo.Roles", "RoleNameIndex");
-            DropIndex("dbo.EventRelatedLinks", new[] { "EventId" });
             DropIndex("dbo.UserRoles", new[] { "IdentityUser_Id" });
             DropIndex("dbo.UserRoles", new[] { "RoleId" });
             DropIndex("dbo.UserLogins", new[] { "IdentityUser_Id" });
@@ -146,13 +145,14 @@ namespace DevEvent.Data.Migrations
             DropIndex("dbo.Users", new[] { "Name" });
             DropIndex("dbo.Users", "UserNameIndex");
             DropIndex("dbo.Events", new[] { "CreateUserId" });
+            DropIndex("dbo.EventRelatedLinks", new[] { "EventId" });
             DropTable("dbo.Roles");
-            DropTable("dbo.EventRelatedLinks");
             DropTable("dbo.UserRoles");
             DropTable("dbo.UserLogins");
             DropTable("dbo.UserClaims");
             DropTable("dbo.Users");
             DropTable("dbo.Events");
+            DropTable("dbo.EventRelatedLinks");
         }
     }
 }

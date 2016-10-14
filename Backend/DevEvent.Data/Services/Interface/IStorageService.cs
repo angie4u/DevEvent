@@ -10,6 +10,8 @@ namespace DevEvent.Data.Services
 {
     public interface IStorageService
     {
+        string StorageBaseUrl { get; }
+
         Task<bool> CreateContainerAsync(string containerName, bool isPublic);
         Task<bool> DeleteContainerAsync(string containerName);
         Task UploadBlobAsync(Stream fileStream, string blobNameToCreate, string containerName);

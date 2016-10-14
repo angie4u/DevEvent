@@ -13,6 +13,6 @@ namespace DevEvent.Data.ViewModels
 
         public int limit { get; set; }
 
-        public EventListFilter Filter { get; set; }
+        public EventListFilter filter { get; set; }
     }
 }

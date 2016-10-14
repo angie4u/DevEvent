@@ -22,6 +22,15 @@ namespace DevEvent.Data.Services
             blobClient = storageAccount.CreateCloudBlobClient();
         }
 
+        public string StorageBaseUrl
+        {
+            get
+            {
+                return blobClient.BaseUri.ToString();
+            }
+        }
+
+
         /// <summary>
         /// Creates a private container with the given name
         /// </summary>

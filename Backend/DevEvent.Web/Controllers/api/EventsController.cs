@@ -16,7 +16,7 @@ namespace DevEvent.Web.Controllers
     public class EventsController : ApiController
     {
         private IEventService EventService;
-
+        
         public EventsController(IEventService eventService)
         {
             this.EventService = eventService;
@@ -28,7 +28,7 @@ namespace DevEvent.Web.Controllers
             try
             {
                 var response = new EventListrResponse();
-                response.TotalCount = await this.EventService.GetEventCountAsync(filter.Filter);
+                response.TotalCount = await this.EventService.GetEventCountAsync(filter.filter);
                 response.Limit = filter.limit;
                 response.Offset = filter.offset;
                 // Total Count 를 같이 줘야 함. 

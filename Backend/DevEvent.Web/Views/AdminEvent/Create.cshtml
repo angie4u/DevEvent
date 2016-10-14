@@ -1,4 +1,5 @@
-﻿
+﻿@using DevEvent.Data.ViewModels
+@model EventDetailViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -11,11 +12,12 @@
                 <h1 class="page-title">Create Event</h1>
                 <div class="separator-2"></div>
                 <div class="space-bottom"></div>
-                <fieldset>
-                    <legend>Event information</legend>
-                    <form role="form" class="form-horizontal" id="event-information">
-                        <input type="hidden" id="Latitude"/>
-                        <input type="hidden" id="Longitude" />
+                <form role="form" action="@Url.Action("Create")" class="form-horizontal" id="newevent-form" enctype="multipart/form-data" method="post">
+                    <fieldset>
+                        <legend>Event information</legend>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" id="latitude" name="latitude" />
+                        <input type="hidden" id="longitude" name="longitude" />
                         <div class="row">
                             <div class="col-lg-2">
                                 <h3 class="title">Basic Info</h3>
@@ -24,52 +26,58 @@
                                 <div class="form-group">
                                     <label for="title" class="col-md-2 control-label">Title<small class="text-default">*</small></label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="title" placeholder="title">
+                                        <input type="text" class="form-control" id="title" name="title" placeholder="title" value="@Model.Title">
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="startdate" class="col-md-2 control-label">Start Date<small class="text-default">*</small></label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="startdate" placeholder="Start Date">
+                                        <input type="text" class="form-control" id="startdate" name="startdate" placeholder="Start Date" value="@Model.StartDate.ToString()">
                                         <i class="fa fa-calendar form-control-feedback"></i>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback">
                                     <label for="enddate" class="col-md-2 control-label">End Date<small class="text-default">*</small></label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="enddate" placeholder="End Date">
+                                        <input type="text" class="form-control" id="enddate" name="enddate" placeholder="End Date" value="@Model.EndDate.ToString()">
                                         <i class="fa fa-calendar form-control-feedback"></i>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="venue" class="col-md-2 control-label">Venue</label>
+                                    <label for="venue" class="col-md-2 control-label">Veune</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="venue" placeholder="Venue">
+                                        <input type="text" class="form-control" id="venue" name="venue" placeholder="Venue" value="@Model.Venue">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="audience" class="col-md-2 control-label">Audience</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="audience" placeholder="Audience">
+                                        <input type="text" class="form-control" id="audience" name="audience" placeholder="Audience" value="@Model.Audience">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="featuredimagefile" class="col-md-2 control-label">Image<small class="text-default">*</small></label>
+                                    <div class="col-md-10">
+                                        <input type="file" class="form-control" id="featuredimagefile" name="featuredimagefile" placeholder="Audience">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="regurl" class="col-md-2 control-label">Registration Url</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="regurl" placeholder="Registration Url">
+                                        <input type="text" class="form-control" id="registrationurl" name="registrationurl" placeholder="Registration Url" value="@Model.RegistrationUrl">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="desc" class="col-md-2 control-label">Description</label>
+                                    <label for="description" class="col-md-2 control-label">Description</label>
                                     <div class="col-md-10">
-                                        <textarea class="form-control" rows="4"></textarea>
+                                        <textarea class="form-control" rows="4" id="description" name="description">@Model.Description</textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="space"></div>
-                        
+
                         <div class="row">
                             <div class="col-lg-2">
                                 <h3 class="title">Location</h3>
@@ -78,7 +86,7 @@
                                 <div class="form-group">
                                     <label for="address" class="col-md-2 control-label">Address</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control" id="address" placeholder="Address">
+                                        <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="@Model.Address">
                                         <button type="button" id="showonmap">지도에 표시</button>
                                     </div>
                                 </div>
@@ -102,14 +110,12 @@
                                 </div>
                             </div>
                         </div>
-                       
-                    </form>
-                </fieldset>
-                
-                <div class="text-right">
-                    <button class="btn btn-primary btn-lg btn-animated" type="submit">Save <i class="fa fa-floppy-o pl-10"></i></button>
-                    <a class="btn btn-animated btn-lg btn-danger" href="/adminevent">Cancel <i class="fa fa-times"></i></a>
-                </div>
+                    </fieldset>
+                    <div class="text-right">
+                        <a class="btn btn-animated btn-lg btn-danger" href="/adminevent">Cancel <i class="fa fa-times"></i></a>
+                        <button class="btn btn-primary btn-lg btn-animated" type="submit" id="submit-button">Save <i class="fa fa-floppy-o pl-10"></i></button>
+                    </div>
+                </form>
             </div>
             <!-- main end -->
         </div>

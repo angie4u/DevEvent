@@ -10,6 +10,9 @@ namespace DevEvent.Web
         {
             bundles.Add(new ScriptBundle("~/js/views/adminevent/create").Include(
                          "~/js/views/adminevent-create.js"));
+
+            bundles.Add(new ScriptBundle("~/js/views/adminevent/index").Include(
+                         "~/js/views/adminevent-index.js"));
         }
     }
 }

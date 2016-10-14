@@ -28,6 +28,7 @@ namespace DevEvent.Web
 
             // DevEvent 서비스
             container.RegisterType<IEventService, EventService>();
+            container.RegisterType<IThumbnailService, ThumbnailService>();
 
             // Azure Storage Blob 서비스 
             container.RegisterType<IStorageService, AzureStorageService>();

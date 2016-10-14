@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using DevEvent.Data.ViewModels;
 using DevEvent.Data.Models;
 using System.Data.Entity;
+using System.IO;
+using System.Drawing;
 
 namespace DevEvent.Data.Services
 {
     public class EventService : IEventService
     {
-        private ApplicationDbContext DbContext; 
+        private ApplicationDbContext DbContext;
+        private IStorageService StorageService;
+        private IThumbnailService ThumbnailService;
 
-        public EventService(ApplicationDbContext dbContext)
+        public EventService(ApplicationDbContext dbContext, IStorageService storageService, IThumbnailService thumbnailService)
         {
             this.DbContext = dbContext;
+            this.StorageService = storageService;
+            this.ThumbnailService = thumbnailService;
         }
 
         /// <summary>
@@ -90,7 +95,7 @@ namespace DevEvent.Data.Services
             IQueryable<Event> events = DbContext.Events;
 
             // former event / following Event 
-            switch (filter.Filter)
+            switch (filter.filter)
             {
                 case EventListFilter.Following:
                     events = events.Where(x => x.StartDate > now);
@@ -101,7 +106,7 @@ namespace DevEvent.Data.Services
             }
 
             // Paging
-            events = events.Skip(filter.offset).Take(filter.limit);
+            events = events.OrderByDescending(x => x.StartDate).Skip(filter.offset).Take(filter.limit);
 
             // Select to viewmodel 
             return await events.Select(x => new EventListViewModel
@@ -109,8 +114,10 @@ namespace DevEvent.Data.Services
                 Description = x.Description,
                 Id = x.Id,
                 StartDate = x.StartDate,
+                EndDate = x.EndDate,
                 ThumbnailImageUrl = x.ThumbnailImageUrl,
-                Title = x.Title
+                Title = x.Title,
+                PublishState = x.PublishState
             }).ToListAsync();
         }
 
@@ -152,19 +159,44 @@ namespace DevEvent.Data.Services
                 CreateUserId = model.CreateUserId,
                 Description = model.Description,
                 EndDate = model.EndDate,
-                FeaturedImageUrl = model.FeaturedImageUrl, //
                 Latitude = model.Latitude,
                 Longitude = model.Longitude, 
                 PublishState = PublishState.Created,
                 RegistrationUrl = model.RegistrationUrl,
                 StartDate = model.StartDate,
                 Title = model.Title,
-                Venue = model.Venue 
+                Venue = model.Venue
             };
 
-            // TODO: RelatedLink, ThumbnailUrl 
-
+            // TODO: RelatedLink,
+            // Save Metadata
             this.DbContext.Events.Add(newevent);
+            await this.DbContext.SaveChangesAsync();
+
+            // File Save
+            var fileName = Path.GetFileName(model.FeaturedImageFile.FileName);
+            var guid = Guid.NewGuid().ToString().ToLower();
+            await this.StorageService.UploadBlobAsync(model.FeaturedImageFile.InputStream, guid + "/" + fileName, "images");
+
+            var url = Path.Combine(this.StorageService.StorageBaseUrl, "images/" + guid, fileName);
+            newevent.FeaturedImageUrl = url;
+            
+#if DEBUG
+            // Make thumbnail and save itto the blob
+            Image srcimg = Image.FromStream(model.FeaturedImageFile.InputStream);
+            Image thumbimg = this.ThumbnailService.CreateThumbnailImage(150, srcimg, true);
+
+            MemoryStream stream = new MemoryStream();
+            thumbimg.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            await this.StorageService.UploadBlobAsync(stream, guid + "/" + fileName, "thumbs");
+            var thumburl = Path.Combine(this.StorageService.StorageBaseUrl, "thumbs/" + guid, fileName);
+            newevent.ThumbnailImageUrl = thumburl;
+#else
+            // TODO: Enqueue to make thumbnail
+#endif
+
+            // save again with image urls
             await this.DbContext.SaveChangesAsync();
 
             return newevent.Id;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace DevEvent.Data.ViewModels
 {
@@ -84,6 +85,8 @@ namespace DevEvent.Data.ViewModels
         /// 행사 등록 페이지 Url
         /// </summary>
         public string RegistrationUrl { get; set; }
+
+        public HttpPostedFileBase FeaturedImageFile { get; set; }
 
         public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
     }
