@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "WaitConfirm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="main-container dark-translucent-bg" style="background-image:url('/images/aakorea_home.jpg');">
+    <div class="container">
+        <div class="row">
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                <div class="form-block center-block p-30 light-gray-bg border-clear text-center">
+                    <h2 class="title">관리자 확인 대기중</h2>
+                    <p>
+                        가입 신청에 대해서 관리자 확인 대기중 입니다.<br />
+                        관리자 확인이 있어야 로그인 후 이용하실 수 있습니다.<br /><br /><br />
+                    </p>
+
+                </div>
+                <div class="text-center"><a class="btn btn-default btn-lg" href="@Url.Action("Index","Home")">홈으로 가기</a></div>
+            </div>
+            <!-- main end -->
+        </div>
+    </div>
+</div>
+<!-- main-container end -->

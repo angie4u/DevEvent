@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DevEvent.Web.Models;
+using DevEvent.Data.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DevEvent.Web.Controllers
 {
@@ -57,8 +59,10 @@ namespace DevEvent.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (returnUrl == null) returnUrl = "/";
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            LoginViewModel model = new LoginViewModel();
+            return View(model);
         }
 
         //
@@ -72,23 +76,54 @@ namespace DevEvent.Web.Controllers
             {
                 return View(model);
             }
+            if (string.IsNullOrEmpty(returnUrl)) returnUrl = Url.Action("Index", "DashBoard");
 
-            // 계정이 잠기는 로그인 실패로 간주되지 않습니다.
-            // 암호 오류 시 계정 잠금을 트리거하도록 설정하려면 shouldLockout: true로 변경하십시오.
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    // EmailConfrim 데이터를 변칙적으로 사용하고 있음. Set은 Admin 에서
+                    var user = await UserManager.FindByEmailAsync(model.Email);
+                    ClaimsIdentity identity = this.UserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+
+                    var isconfirmed = await UserManager.IsEmailConfirmedAsync(user.Id);
+
+                    if (user.RegisterState == UserRegisterState.Withdrawn)
+                    {
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        ModelState.AddModelError("", "아이디 또는 비밀번호가 틀렸습니다");
+                        return View(model);
+                    }
+
+                    if (isconfirmed == false)
+                    {
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        return RedirectToAction("WaitConfirm");
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "잘못된 로그인 시도입니다.");
+                    ModelState.AddModelError("", "아이디 또는 비밀번호가 틀렸습니다");
                     return View(model);
             }
+        }
+
+        /// <summary>
+        /// 관리자가 가입 컨펌 안해주면 보여주는 페이지 
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult WaitConfirm()
+        {
+            return View();
         }
 
         //
@@ -139,7 +174,28 @@ namespace DevEvent.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var model = new RegisterViewModel();
+            return View(model);
+        }
+
+        /// <summary>
+        /// 등록되어 있는 이메일인지 확인
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<JsonResult> ValidEmail(string email)
+        {
+            var result = await UserManager.FindByEmailAsync(email);
+            if (result == null)
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
         }
 
         //
@@ -151,19 +207,24 @@ namespace DevEvent.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, CreatedTime = DateTimeOffset.Now, UpdatedTime = DateTimeOffset.Now, EmailConfirmed=true };
+                IdentityResult result;
+                result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    // Add Role
+                    await UserManager.AddToRoleAsync(user.Id, "Administrators");
                     
                     // 계정 확인 및 암호 재설정을 사용하도록 설정하는 방법에 대한 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=320771을 참조하십시오.
                     // 이 링크를 통해 전자 메일 보내기
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "계정 확인", "<a href=\"" + callbackUrl + "\">여기</a>를 클릭하여 계정을 확인하십시오.");
+                     //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                     //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                     //await UserManager.SendEmailAsync(user.Id, "계정 확인", "<a href=\"" + callbackUrl + "\">여기</a>를 클릭하여 계정을 확인하십시오.");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
+                    //return View("DisplayEmail");
                 }
                 AddErrors(result);
             }

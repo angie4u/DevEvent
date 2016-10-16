@@ -1,22 +1,28 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
-
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("안녕하세요 " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">로그오프</a></li>
-    </ul>
-    }
+    <form action="@Url.Action("LogOff","Account")" method="post" role="form" style="display:inline;">
+        <div id="header-top-second">
+            <div class="header-top-dropdown text-right">
+                <div class="btn-group">
+                    <a href="@Url.Action("Manage","Account")" class="btn btn-default btn-sm mr-10"><i class="fa fa-user mr-10"></i> 계정관리</a>
+                </div>
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-default btn-sm"><i class="fa fa-power-off mr-10"></i> 로그아웃</button>
+            </div>
+        </div>
+    </form>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("등록", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("로그인", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <div id="header-top-second" class="clearfix">
+        <div class="header-top-dropdown text-right">
+            <div class="btn-group">
+                <a href="@Url.Action("Register","Account")" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign Up</a>
+            </div>
+            <div class="btn-group">
+                <a href="@Url.Action("Login","Account")" class="btn btn-default btn-sm"><i class="fa fa-user pr-10"></i> Sign In</a>
+            </div>
+        </div>
+    </div>
 }

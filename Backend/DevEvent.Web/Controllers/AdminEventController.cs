@@ -11,6 +11,7 @@ using DevEvent.Web.Models;
 
 namespace DevEvent.Web.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class AdminEventController : Controller
     {
         private IEventService EventService;

@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using DevEvent.Web.Models;
+using DevEvent.Data.Models;
 
 namespace DevEvent.Web
 {

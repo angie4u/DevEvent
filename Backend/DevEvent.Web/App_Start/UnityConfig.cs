@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using DevEvent.Data.Services;
+using DevEvent.Web.Controllers;
 
 namespace DevEvent.Web
 {
@@ -19,6 +20,8 @@ namespace DevEvent.Web
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
+
+            container.RegisterType<AccountController>(new InjectionConstructor());
 
             // Admin 사용자 관련
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();

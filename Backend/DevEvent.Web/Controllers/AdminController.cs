@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DevEvent.Web.Controllers
 {
-    //[Authorize(Roles = "Administrators")]
+    [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         // GET: Admin

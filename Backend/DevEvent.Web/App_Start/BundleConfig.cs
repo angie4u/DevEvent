@@ -17,6 +17,9 @@ namespace DevEvent.Web
             bundles.Add(new ScriptBundle("~/js/views/adminevent/edit").Include(
                          "~/js/views/adminevent-edit.js"));
 
+            bundles.Add(new ScriptBundle("~/js/views/account/register").Include(
+                         "~/js/views/account-register.js"));
+
         }
     }
 }
