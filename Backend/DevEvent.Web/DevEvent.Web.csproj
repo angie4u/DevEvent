@@ -570,6 +570,7 @@
     <Content Include="js\moment.js" />
     <Content Include="js\moment.min.js" />
     <Content Include="js\template.js" />
+    <Content Include="js\views\adminevent-edit.js" />
     <Content Include="js\views\adminevent-create.js" />
     <Content Include="js\views\adminevent-index.js" />
     <Content Include="php\email-sender-recaptcha.php" />

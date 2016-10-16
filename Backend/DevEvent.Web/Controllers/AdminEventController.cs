@@ -71,25 +71,44 @@ namespace DevEvent.Web.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            try
+            {
+                var evt = await this.EventService.GetEventDetailAsync(id);
+                return View(evt);
+            }
+            catch
+            {
+                return new HttpNotFoundResult();
+            }
         }
 
         // POST: Default/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(EventDetailViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                try
+                {
+                    // just test 
+                    model.CreateUserId = "f103fa74-3baa-4101-bcb5-0f8cefc4b399";
 
-                return RedirectToAction("Index");
+                    // created user id 
+                    //var userid = User.Identity.GetUserId();
+                    //model.CreateUserId = userid;
+                    //if (string.IsNullOrEmpty(userid)) throw new AccessViolationException("권한이 없습니다");
+                    await this.EventService.UpdateEventAsync(model);
+
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View(model);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
 
         // POST: Default/Delete/5

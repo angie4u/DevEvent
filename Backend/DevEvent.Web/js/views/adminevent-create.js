@@ -1,8 +1,8 @@
 ﻿(function ($) {
     'use strict'
-    $('#startdate').datetimepicker({ format: 'YYYY-MM-DD h:mm:ss a', sideBySide: true });
-    $('#enddate').datetimepicker({ format: 'YYYY-MM-DD h:mm:ss a', sideBySide: true });
-    // enddate > startdate
+    $('#startdate').datetimepicker({ format: 'YYYY-MM-DD a h:mm:ss', sideBySide: true });
+    $('#enddate').datetimepicker({ format: 'YYYY-MM-DD a h:mm:ss', sideBySide: true });
+    // TODO: enddate > startdate
 
     var geocoder;
     var markers = [];

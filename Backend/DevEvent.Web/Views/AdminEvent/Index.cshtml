@@ -48,7 +48,7 @@
                                     <a class="overlay-link small" href="@Url.Action("Edit", new { id = @item.Id })"><i class="fa fa-link"></i></a>
                                 </div>
                             </td>
-                            <td class="product" style="width:auto;"><a href="shop-product.html">@item.Title</a> <small>@item.Description</small></td>
+                            <td class="product" style="width:auto;"><a href="@Url.Action("Edit", new { id = @item.Id })">@item.Title</a> <small>@item.Description</small></td>
                             <td><p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>@item.StartDate.ToString("yyyy-MM-dd tt h:mm")</p></td>
                             <td><p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>@item.EndDate.ToString("yyyy-MM-dd tt h:mm")</p></td>
                             <td>
