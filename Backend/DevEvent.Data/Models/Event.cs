@@ -59,12 +59,12 @@ namespace DevEvent.Data.Models
         /// <summary>
         /// 위도
         /// </summary>
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         /// <summary>
         /// 경도
         /// </summary>
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
 
         /// <summary>
         /// 행사 주요 참여자의 분류

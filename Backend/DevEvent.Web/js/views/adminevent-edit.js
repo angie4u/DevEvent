@@ -30,7 +30,7 @@
         setMapOnAll(null);
         var address = $('#address').val();
         geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
+            if (status === google.maps.GeocoderStatus.OK) {
                 var loc = results[0].geometry.location;
                 // set input value
                 $('#latitude').val(loc.lat());
@@ -41,6 +41,24 @@
                 alert("Geocode was not successful for the following reason: " + status);
             }
         });
+    });
+
+    $('#delete').click(function () {
+        if(confirm("Are you sure?")) {
+
+            $.ajax({
+                type: 'POST',
+                url: "/adminevent/delete/",
+                data: {id: $('#id').val()},
+                async: false,
+                success: function () {
+                    window.location.href = "/adminevent";
+                }
+            });
+
+        } else {
+            return false;
+        }
     });
 
     var location;

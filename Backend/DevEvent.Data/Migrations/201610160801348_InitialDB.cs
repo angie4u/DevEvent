@@ -3,7 +3,7 @@ namespace DevEvent.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitializeDB : DbMigration
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
@@ -34,8 +34,8 @@ namespace DevEvent.Data.Migrations
                         EndDate = c.DateTimeOffset(nullable: false, precision: 7),
                         Venue = c.String(),
                         Address = c.String(),
-                        Latitude = c.Double(nullable: false),
-                        Longitude = c.Double(nullable: false),
+                        Latitude = c.Double(),
+                        Longitude = c.Double(),
                         Audience = c.String(),
                         RegistrationUrl = c.String(),
                         ThumbnailImageUrl = c.String(),

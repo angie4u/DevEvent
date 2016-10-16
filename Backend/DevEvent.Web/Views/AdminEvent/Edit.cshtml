@@ -121,11 +121,16 @@
                             </div>
                         </div>
                     </fieldset>
+                    <div style="float: left;">
+                        <button id="delete" type="button" class="btn btn-animated btn-lg btn-warning">Delete <i class="fa fa-trash"></i></button>
+                    </div>
                     <div class="text-right">
-                        <a class="btn btn-animated btn-lg btn-danger" href="/adminevent">Cancel <i class="fa fa-times"></i></a>
+                        
+                        <a class="btn btn-animated btn-lg btn-danger" href="@Url.Action("Index")">Cancel <i class="fa fa-times"></i></a>
                         <button class="btn btn-primary btn-lg btn-animated" type="submit" id="submit-button">Save <i class="fa fa-floppy-o pl-10"></i></button>
                     </div>
                 </form>
+                
             </div>
             <!-- main end -->
         </div>

@@ -145,6 +145,21 @@ namespace DevEvent.Data.Services
                 }
             }
 
+            try
+            {
+                // Delete files 
+                if (!string.IsNullOrEmpty(item.FeaturedImageUrl))
+                {
+                    await this.StorageService.DeleteBlobAsync("images", item.FeaturedImageUrl.Replace(this.StorageService.StorageBaseUrl + "images/", ""));
+                }
+
+                if (!string.IsNullOrEmpty(item.ThumbnailImageUrl))
+                {
+                    await this.StorageService.DeleteBlobAsync("thumbs", item.ThumbnailImageUrl.Replace(this.StorageService.StorageBaseUrl + "thumbs/", ""));
+                }
+            }
+            catch { } // skip error anyway. It will make a trash.
+
             // remove event
             this.DbContext.Events.Remove(item);
             await DbContext.SaveChangesAsync();

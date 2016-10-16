@@ -115,9 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201610110632162_InitializeDB.cs" />
-    <Compile Include="Migrations\201610110632162_InitializeDB.Designer.cs">
-      <DependentUpon>201610110632162_InitializeDB.cs</DependentUpon>
+    <Compile Include="Migrations\201610160801348_InitialDB.cs" />
+    <Compile Include="Migrations\201610160801348_InitialDB.Designer.cs">
+      <DependentUpon>201610160801348_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\LinkType.cs" />
@@ -144,8 +144,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610110632162_InitializeDB.resx">
-      <DependentUpon>201610110632162_InitializeDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610160801348_InitialDB.resx">
+      <DependentUpon>201610160801348_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

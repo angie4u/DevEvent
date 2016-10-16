@@ -52,7 +52,7 @@ namespace DevEvent.Web.Controllers
                 try
                 {
                     // just test 
-                    model.CreateUserId = "f103fa74-3baa-4101-bcb5-0f8cefc4b399";
+                    model.CreateUserId = "8c295a0f-9869-4f2e-b8da-e87ddfec92ee";
 
                     // created user id 
                     //var userid = User.Identity.GetUserId();
@@ -93,7 +93,7 @@ namespace DevEvent.Web.Controllers
                 try
                 {
                     // just test 
-                    model.CreateUserId = "f103fa74-3baa-4101-bcb5-0f8cefc4b399";
+                    model.CreateUserId = "8c295a0f-9869-4f2e-b8da-e87ddfec92ee";
 
                     // created user id 
                     //var userid = User.Identity.GetUserId();
@@ -113,17 +113,16 @@ namespace DevEvent.Web.Controllers
 
         // POST: Default/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                await this.EventService.DeleteEventAsync(id);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }
