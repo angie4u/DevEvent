@@ -41,14 +41,14 @@
                         @foreach (var item in Model.Events)
                         {
                         <tr>
-                            <td>@item.Id</td>
+                            <td>@item.EventId</td>
                             <td style="width:80px">
                                 <div class="overlay-container">
                                     <img class="media-object" alt="event-thumb" src="@item.ThumbnailImageUrl" >
-                                    <a class="overlay-link small" href="@Url.Action("Edit", new { id = @item.Id })"><i class="fa fa-link"></i></a>
+                                    <a class="overlay-link small" href="@Url.Action("Edit", new { id = @item.EventId })"><i class="fa fa-link"></i></a>
                                 </div>
                             </td>
-                            <td class="product" style="width:auto;"><a href="@Url.Action("Edit", new { id = @item.Id })">@item.Title</a> <small>@item.Description</small></td>
+                            <td class="product" style="width:auto;"><a href="@Url.Action("Edit", new { id = @item.EventId })">@item.Title</a> <small>@item.Description</small></td>
                             <td><p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>@item.StartDate.ToString("yyyy-MM-dd tt h:mm")</p></td>
                             <td><p class="small margin-clear"><i class="fa fa-calendar pr-10"></i>@item.EndDate.ToString("yyyy-MM-dd tt h:mm")</p></td>
                             <td>

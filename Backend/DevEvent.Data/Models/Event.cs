@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Azure.Mobile.Server.Tables;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,11 +11,36 @@ namespace DevEvent.Data.Models
 {
     public class Event
     {
+        #region "For Mobile Offline Sync"
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Index]
+        [TableColumn(TableColumnType.CreatedAt)]
+        public DateTimeOffset? CreatedAt { get; set; }
+
+        [TableColumn(TableColumnType.Deleted)]
+        public bool Deleted { get; set; }
+
+        [Index]
+        [TableColumn(TableColumnType.Id)]
+        [MaxLength(36)]
+        public string Id { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        [TableColumn(TableColumnType.UpdatedAt)]
+        public DateTimeOffset? UpdatedAt { get; set; }
+
+        [TableColumn(TableColumnType.Version)]
+        [Timestamp]
+        public byte[] Version { get; set; }
+
+        #endregion
+
         /// <summary>
         /// 이벤트 키 
         /// </summary>
         [Key]
-        public long Id { get; set; }
+        public long EventId { get; set; }
 
         /// <summary>
         /// 배포(Publish) 

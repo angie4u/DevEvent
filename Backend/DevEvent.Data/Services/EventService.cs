@@ -30,7 +30,7 @@ namespace DevEvent.Data.Services
         /// <returns></returns>
         public async Task<EventDetailViewModel> GetEventDetailAsync(long id)
         {
-            var item = await DbContext.Events.Include(x => x.CreateUser).Include(x => x.RelatedLinks).Where(x => x.Id == id).Select(x => new EventDetailViewModel
+            var item = await DbContext.Events.Include(x => x.CreateUser).Include(x => x.RelatedLinks).Where(x => x.EventId == id).Select(x => new EventDetailViewModel
             {
                 Address = x.Address,
                 Audience = x.Audience,
@@ -39,7 +39,7 @@ namespace DevEvent.Data.Services
                 Description = x.Description,
                 EndDate = x.EndDate,
                 FeaturedImageUrl = x.FeaturedImageUrl,
-                Id = x.Id,
+                EventId = x.EventId,
                 Latitude = x.Latitude,
                 Longitude = x.Longitude,
                 RegistrationUrl = x.RegistrationUrl,
@@ -113,7 +113,7 @@ namespace DevEvent.Data.Services
             return await events.Select(x => new EventListViewModel
             {
                 Description = x.Description,
-                Id = x.Id,
+                EventId = x.EventId,
                 StartDate = x.StartDate,
                 EndDate = x.EndDate,
                 ThumbnailImageUrl = x.ThumbnailImageUrl,
@@ -128,7 +128,7 @@ namespace DevEvent.Data.Services
         /// <param name="id"></param>
         public async Task DeleteEventAsync(int id)
         {
-            var item = this.DbContext.Events.Where(x => x.Id == id).FirstOrDefault();
+            var item = this.DbContext.Events.Where(x => x.EventId == id).FirstOrDefault();
             if (item == null) throw new ArgumentException("No Event with id " + id);
 
             // Remove related Links
@@ -215,13 +215,13 @@ namespace DevEvent.Data.Services
             // save again with image urls
             await this.DbContext.SaveChangesAsync();
 
-            return newevent.Id;
+            return newevent.EventId;
         }
 
         public async Task<long> UpdateEventAsync(EventDetailViewModel model)
         {
-            var item = this.DbContext.Events.Where(x => x.Id == model.Id).FirstOrDefault();
-            if (item == null) throw new ArgumentException("No Event with id " + model.Id);
+            var item = this.DbContext.Events.Where(x => x.EventId == model.EventId).FirstOrDefault();
+            if (item == null) throw new ArgumentException("No Event with id " + model.EventId);
 
             item.Address = model.Address;
             item.Audience = model.Audience;
@@ -239,7 +239,7 @@ namespace DevEvent.Data.Services
 
             await this.DbContext.SaveChangesAsync();
 
-            return item.Id;
+            return item.EventId;
         }
     }
 }

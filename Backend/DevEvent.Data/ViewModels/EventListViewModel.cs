@@ -9,7 +9,7 @@ namespace DevEvent.Data.ViewModels
 {
     public class EventListViewModel
     {
-        public long Id { get; set; }
+        public long EventId { get; set; }
 
         public string Title { get; set; }
 

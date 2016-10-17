@@ -1,16 +1,19 @@
 ﻿using DevEvent.Data.Models;
+using Microsoft.Azure.Mobile.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace DevEvent.Data.ViewModels
+namespace DevEvent.Data.DataObjects
 {
-    public class EventDetailViewModel
+    public class MobileEvent : EntityData
     {
-        public long EventId { get; set; }
+        /// <summary>
+        /// 배포(Publish) 
+        /// </summary>
+        public PublishState PublishState { get; set; }
 
         /// <summary>
         /// 이벤트 타이틀
@@ -60,6 +63,11 @@ namespace DevEvent.Data.ViewModels
         public string Audience { get; set; }
 
         /// <summary>
+        /// 행사 등록 페이지 Url
+        /// </summary>
+        public string RegistrationUrl { get; set; }
+
+        /// <summary>
         /// 대표이미지로부터 만든 Thumbnail Image Url
         /// </summary>
         public string ThumbnailImageUrl { get; set; }
@@ -70,24 +78,23 @@ namespace DevEvent.Data.ViewModels
         public string FeaturedImageUrl { get; set; }
 
         /// <summary>
-        /// 누가 만들었나
+        /// 생성일
         /// </summary>
-        public string CreateUserId { get; set; }
+        public DateTimeOffset CreatedTime { get; set; }
+        /// <summary>
+        /// 수정일
+        /// </summary>
+        public DateTimeOffset? UpdatedTime { get; set; }
 
         /// <summary>
-        /// 만든 Admin Nav Prop
+        ///  만든사람 이름
         /// </summary>
         public string CreateUserName { get; set; }
 
-        public PublishState PublishState { get; set; }
-
         /// <summary>
-        /// 행사 등록 페이지 Url
+        /// 만든사람 아이디
         /// </summary>
-        public string RegistrationUrl { get; set; }
+        public string CreateUserId { get; set; }
 
-        public HttpPostedFileBase FeaturedImageFile { get; set; }
-
-        public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
     }
 }
