@@ -8,7 +8,7 @@
     <ListView
       SeparatorColor="#52656b"
       x:Name="MyList"
-      ItemTemplate="{StaticResource OrderItemTemplate}"
+      ItemTemplate="{StaticResource PastEventTemplate}"
       ItemsSource="{Binding EventList}"
       ItemSelected="MyListView_ItemSelected"
       HasUnevenRows="True">

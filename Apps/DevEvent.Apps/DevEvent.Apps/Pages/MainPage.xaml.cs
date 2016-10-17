@@ -34,10 +34,16 @@ namespace DevEvent.Apps.Pages
             MyList.ItemsSource = list;
         }
 
+        //이벤트 정보 넘겨주는 코드 
         async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
+                
+                if(e.SelectedItem is ViewModels.EventListViewModel)
+                {
+                    //await Navigation.PushAsync()
+                }
                 /*if (e.SelectedItem is ViewModels.OrderViewModel)
                 {
                     var list = e.SelectedItem as ViewModels.OrderViewModel;

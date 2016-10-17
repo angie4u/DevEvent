@@ -40,8 +40,8 @@ namespace DevEvent.Apps.ViewModels
             Menu.Add(new MenuItemViewModel()
             {
                 Icon = "ic_action_home",
-                Title = "지난행사",
-                PageName = "MainPage"
+                Title = "PastEvent",
+                PageName = "PastEvent"
             });
 
             Menu.Add(new MenuItemViewModel()

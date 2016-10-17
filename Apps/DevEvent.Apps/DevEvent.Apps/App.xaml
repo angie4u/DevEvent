@@ -48,12 +48,74 @@
             </Grid.RowDefinitions>
 
             <StackLayout>
+              <StackLayout Orientation="Horizontal">
+                <Label
+                  FontAttributes="Bold"
+                  FontSize="16"
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource FontColor}"
+                  Text="{Binding EventTitle}"></Label>
+                <Button 
+                  Text="Has Image" 
+                  Image="heart.png" 
+                  WidthRequest="30"
+                  HeightRequest="30"
+                  />
+                
+              </StackLayout>
+              
+              <StackLayout Orientation="Horizontal">
+
+                <Label
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource MainColor}"
+                  Text="{Binding EventStartDay, StringFormat='{0:yyyy/MM/dd HH:mm}'}"></Label>
+                <Label
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource MainColor}"
+                  Text="~"></Label>
+                <Label
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource MainColor}"
+                  Text="{Binding EventEndDay, StringFormat='{0:HH:mm}'}"></Label>
+              </StackLayout>
               <Label
-                FontAttributes="Bold"
-                FontSize="16"
+               VerticalOptions="Center"
+               TextColor="{StaticResource FontColor}"
+               Text="{Binding Venue}"></Label>
+              <Label
                 VerticalOptions="Center"
                 TextColor="{StaticResource FontColor}"
-                Text="{Binding EventTitle}"></Label>
+                Text="{Binding Description}"></Label>
+            </StackLayout>
+            <Image
+               WidthRequest="250" HeightRequest="150" VerticalOptions="Start"
+               Source="{Binding ImageURL}" Grid.Row="1"></Image>
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+
+      <DataTemplate x:Key="PastEventTemplate">
+        <ViewCell>
+
+          <Grid Padding="8">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+              <StackLayout Orientation="Horizontal">
+                <Label
+                  FontAttributes="Bold"
+                  FontSize="16"
+                  VerticalOptions="Center"
+                  TextColor="{StaticResource FontColor}"
+                  Text="{Binding EventTitle}"></Label>
+                
+
+              </StackLayout>
+
               <StackLayout Orientation="Horizontal">
 
                 <Label
