@@ -23,16 +23,18 @@ namespace DevEvent.Web.Controllers
         }
 
         // GET api/<controller>
-        public async Task<EventListrResponse> Get(EventListFilterViewModel filter)
+        [HttpGet]
+        public async Task<EventListrResponse> Get([FromUri]EventListFilterViewModel model)
         {
             try
             {
                 var response = new EventListrResponse();
-                response.TotalCount = await this.EventService.GetEventCountAsync(filter.filter);
-                response.Limit = filter.limit;
-                response.Offset = filter.offset;
+
+                response.TotalCount = await this.EventService.GetEventCountAsync(model.filter);
+                response.Limit = model.limit;
+                response.Offset = model.offset;
                 // Total Count 를 같이 줘야 함. 
-                response.Events = await this.EventService.GetEventListAsync(filter);
+                response.Events = await this.EventService.GetEventListAsync(model);
 
                 return response;
             }
@@ -57,6 +59,7 @@ namespace DevEvent.Web.Controllers
         }
 
         // POST api/<controller>
+        [HttpPost]
         public async Task Post([FromBody]EventDetailViewModel model)
         {
             try
@@ -74,6 +77,7 @@ namespace DevEvent.Web.Controllers
         }
 
         // PUT api/<controller>/5
+        [HttpPost]
         public async Task Put(int id, [FromBody]EventDetailViewModel model)
         {
             try

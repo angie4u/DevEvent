@@ -18,12 +18,6 @@ namespace DevEvent.Web
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "API Default",
-                url: "api/{controller}/{id}",
-                defaults: new { id = UrlParameter.Optional }
-            );
         }
     }
 }

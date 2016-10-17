@@ -52,13 +52,10 @@ namespace DevEvent.Web.Controllers
             {
                 try
                 {
-                    // just test 
-                    model.CreateUserId = "8c295a0f-9869-4f2e-b8da-e87ddfec92ee";
-
                     // created user id 
-                    //var userid = User.Identity.GetUserId();
-                    //model.CreateUserId = userid;
-                    //if (string.IsNullOrEmpty(userid)) throw new AccessViolationException("권한이 없습니다");
+                    var userid = User.Identity.GetUserId();
+                    model.CreateUserId = userid;
+                    if (string.IsNullOrEmpty(userid)) throw new AccessViolationException("권한이 없습니다");
 
                     await this.EventService.AddEventAsync(model);
 
@@ -93,13 +90,11 @@ namespace DevEvent.Web.Controllers
             {
                 try
                 {
-                    // just test 
-                    model.CreateUserId = "8c295a0f-9869-4f2e-b8da-e87ddfec92ee";
-
                     // created user id 
-                    //var userid = User.Identity.GetUserId();
-                    //model.CreateUserId = userid;
-                    //if (string.IsNullOrEmpty(userid)) throw new AccessViolationException("권한이 없습니다");
+                    var userid = User.Identity.GetUserId();
+                    model.CreateUserId = userid;
+                    if (string.IsNullOrEmpty(userid)) throw new AccessViolationException("권한이 없습니다");
+
                     await this.EventService.UpdateEventAsync(model);
 
                     return RedirectToAction("Index");

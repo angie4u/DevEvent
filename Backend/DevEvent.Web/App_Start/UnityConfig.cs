@@ -1,12 +1,12 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
-using Unity.Mvc5;
 using DevEvent.Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using DevEvent.Data.Services;
 using DevEvent.Web.Controllers;
+using System.Web.Http;
 
 namespace DevEvent.Web
 {
@@ -29,14 +29,22 @@ namespace DevEvent.Web
             container.RegisterType<DbContext, ApplicationDbContext>();
             container.RegisterType<ApplicationUserManager>();
 
-            // DevEvent 서비스
-            container.RegisterType<IEventService, EventService>();
-            container.RegisterType<IThumbnailService, ThumbnailService>();
-
+            
             // Azure Storage Blob 서비스 
             container.RegisterType<IStorageService, AzureStorageService>();
+            container.RegisterType<IThumbnailService, ThumbnailService>();
+            // DevEvent 서비스
+            //container.RegisterType<IEventService, EventService>(new InjectionFactory((c,t,s) => new EventService(
+            //    container.Resolve<ApplicationDbContext>(),
+            //    container.Resolve<IStorageService>(),
+            //    container.Resolve<IThumbnailService>()
+            //    )));
 
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            container.RegisterType<IEventService, EventService>();
+
+            DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
+
+            GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
         }
     }
 }

@@ -54,7 +54,8 @@ namespace DevEvent.Data.Services
                 StartDate = x.StartDate,
                 ThumbnailImageUrl = x.ThumbnailImageUrl,
                 Title = x.Title,
-                Venue = x.Venue
+                Venue = x.Venue,
+                PublishState = x.PublishState
             }).FirstOrDefaultAsync();
 
             if (item == null) throw new ArgumentException("No Event with id " + id);
