@@ -3,7 +3,7 @@ namespace DevEvent.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDb : DbMigration
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
@@ -26,7 +26,12 @@ namespace DevEvent.Data.Migrations
                 "dbo.Events",
                 c => new
                     {
-                        Id = c.Long(nullable: false, identity: true),
+                        EventId = c.Long(nullable: false),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
+                        Deleted = c.Boolean(nullable: false),
+                        Id = c.String(maxLength: 36),
+                        UpdatedAt = c.DateTimeOffset(precision: 7),
+                        Version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         PublishState = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         Description = c.String(storeType: "ntext"),
@@ -42,8 +47,10 @@ namespace DevEvent.Data.Migrations
                         FeaturedImageUrl = c.String(),
                         CreateUserId = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
+                .PrimaryKey(t => t.EventId)
                 .ForeignKey("dbo.Users", t => t.CreateUserId, cascadeDelete: true)
+                .Index(t => t.CreatedAt)
+                .Index(t => t.Id)
                 .Index(t => t.CreateUserId);
             
             CreateTable(
@@ -145,6 +152,8 @@ namespace DevEvent.Data.Migrations
             DropIndex("dbo.Users", new[] { "Name" });
             DropIndex("dbo.Users", "UserNameIndex");
             DropIndex("dbo.Events", new[] { "CreateUserId" });
+            DropIndex("dbo.Events", new[] { "Id" });
+            DropIndex("dbo.Events", new[] { "CreatedAt" });
             DropIndex("dbo.EventRelatedLinks", new[] { "EventId" });
             DropTable("dbo.Roles");
             DropTable("dbo.UserRoles");
