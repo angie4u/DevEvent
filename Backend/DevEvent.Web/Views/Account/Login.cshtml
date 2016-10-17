@@ -2,62 +2,53 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "로그인";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>로컬 계정을 사용하여 로그인합니다.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+<div class="main-container dark-translucent-bg" style="background-image:url('/images/background-img-6.jpg');">
+    <div class="container">
+        <div class="row">
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                <div class="form-block center-block p-30 light-gray-bg border-clear">
+                    <h2 class="title">Log In</h2>
+                    <form class="form-horizontal login-form" action="@Url.Action("Login","Account")" method="post">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                        <div class="form-group has-feedback">
+                            <label for="inputUserName" class="col-sm-3 control-label">email</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" placeholder="abc@domain.com" name="email" value="@Model.Email">
+                                <i class="fa fa-user form-control-feedback"></i>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-group has-feedback">
+                            <label for="inputPassword" class="col-sm-3 control-label">password</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" placeholder="password" name="password">
+                                <i class="fa fa-lock form-control-feedback"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="inputRememberMe"> Remember me
+                                        <input type="hidden" name="RememberMe" id="RememberMe" value="false" />
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-group btn-default btn-animated submit-button">Log In <i class="fa fa-user"></i></button>
+                                <ul class="space-top">
+                                    <li><a href="@Url.Action("ForgotPassword","Account")">Forgot password?</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="로그인" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("새 사용자로 등록", "Register")
-                </p>
-                @* 암호 재설정 기능에 대해 계정 확인을 사용하도록 설정한 경우 이 항목 사용
-                    <p>
-                        @Html.ActionLink("암호를 잊으셨습니까?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
+                <p class="text-center space-top">Don't have an account yet? <a href="@Url.Action("Register","Account")">Sign Up</a> now</p>
+            </div>
+        </div>
     </div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
