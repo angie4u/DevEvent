@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DevEvent.Apps.Pages.MainPage"
+             x:Class="DevEvent.Apps.Pages.PastEventPage"
              BackgroundColor="{StaticResource BackgroundColor}"
-             Title="Developer Event"
+             Title="지난 행사 목록"
              BindingContext="{Binding Main, Source={StaticResource Locator}}">
   <Grid>
     <Grid.RowDefinitions>
@@ -11,21 +11,21 @@
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
     <StackLayout Orientation="Horizontal" Padding="8,8,8,0" HorizontalOptions="Center">
-     
+
       <Label
         x:Name ="Month"
         VerticalOptions="Center"
         TextColor="{StaticResource FontColor}"></Label>
-      
+
     </StackLayout>
 
     <StackLayout Grid.Row="1" >
       <ListView
         SeparatorColor="#52656b"
         x:Name="MyList"
-        ItemTemplate="{StaticResource ShortListTemplate}"
+        ItemTemplate="{StaticResource PastEventTemplate}"
         ItemsSource="{Binding EventList}"
-        ItemSelected="MyListView_ItemSelected"
+        
         HasUnevenRows="True">
       </ListView>
     </StackLayout>
