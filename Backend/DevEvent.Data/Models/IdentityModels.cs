@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.Azure.Mobile.Server.Tables;
+using System.Linq;
 
 namespace DevEvent.Data.Models
 {
@@ -69,6 +72,10 @@ namespace DevEvent.Data.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Add(
+                    new AttributeToColumnAnnotationConvention<TableColumnAttribute, string>(
+                        "ServiceTableColumn", (property, attributes) => attributes.Single().ColumnType.ToString()));
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<IdentityUser>().ToTable("Users");

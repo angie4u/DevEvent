@@ -2,6 +2,7 @@ namespace DevEvent.Data.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Azure.Mobile.Server.Tables;
     using Models;
     using System;
     using System.Data.Entity;
@@ -13,6 +14,8 @@ namespace DevEvent.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+
+            SetSqlGenerator("System.Data.SqlClient", new EntityTableSqlGenerator());
         }
 
         protected override void Seed(DevEvent.Data.Models.ApplicationDbContext context)
@@ -35,7 +38,6 @@ namespace DevEvent.Data.Migrations
                 var userToInsert = new ApplicationUser { UserName = "admin@devevent.azurewebsite.net", Email = "admin@devevent.azurewebsite.net", PhoneNumber = "1234567", Name = "Default Admin", EmailConfirmed = true, RegisterState = UserRegisterState.ConfirmedByAdmin };
                 userManager.Create(userToInsert, "Admin!0987");
                 userManager.AddToRole(userToInsert.Id, "Administrators");
-
             }
         }
     }

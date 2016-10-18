@@ -49,7 +49,7 @@
             $.ajax({
                 type: 'POST',
                 url: "/adminevent/delete/",
-                data: {id: $('#id').val()},
+                data: {id: $('#eventid').val()},
                 async: false,
                 success: function () {
                     window.location.href = "/adminevent";

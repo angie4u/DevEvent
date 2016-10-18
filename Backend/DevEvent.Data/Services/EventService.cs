@@ -181,13 +181,21 @@ namespace DevEvent.Data.Services
                 RegistrationUrl = model.RegistrationUrl,
                 StartDate = model.StartDate,
                 Title = model.Title,
-                Venue = model.Venue
+                Venue = model.Venue,
             };
 
             // TODO: RelatedLink,
             // Save Metadata
             this.DbContext.Events.Add(newevent);
-            await this.DbContext.SaveChangesAsync();
+            try
+            {
+                await this.DbContext.SaveChangesAsync();
+            }
+            catch(Exception e)
+            {
+
+            }
+            
 
             // File Save
             var fileName = Path.GetFileName(model.FeaturedImageFile.FileName);

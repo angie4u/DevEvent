@@ -40,6 +40,7 @@ namespace DevEvent.Data.Models
         /// 이벤트 키 
         /// </summary>
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long EventId { get; set; }
 
         /// <summary>

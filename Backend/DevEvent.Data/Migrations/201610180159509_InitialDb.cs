@@ -1,9 +1,11 @@
 namespace DevEvent.Data.Migrations
 {
     using System;
+    using System.Collections.Generic;
+    using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDB : DbMigration
+    public partial class InitialDb : DbMigration
     {
         public override void Up()
         {
@@ -26,12 +28,47 @@ namespace DevEvent.Data.Migrations
                 "dbo.Events",
                 c => new
                     {
-                        EventId = c.Long(nullable: false),
-                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
-                        Deleted = c.Boolean(nullable: false),
-                        Id = c.String(maxLength: 36),
-                        UpdatedAt = c.DateTimeOffset(precision: 7),
-                        Version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
+                        EventId = c.Long(nullable: false, identity: true),
+                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7,
+                            annotations: new Dictionary<string, AnnotationValues>
+                            {
+                                { 
+                                    "ServiceTableColumn",
+                                    new AnnotationValues(oldValue: null, newValue: "CreatedAt")
+                                },
+                            }),
+                        Deleted = c.Boolean(nullable: false,
+                            annotations: new Dictionary<string, AnnotationValues>
+                            {
+                                { 
+                                    "ServiceTableColumn",
+                                    new AnnotationValues(oldValue: null, newValue: "Deleted")
+                                },
+                            }),
+                        Id = c.String(maxLength: 36,
+                            annotations: new Dictionary<string, AnnotationValues>
+                            {
+                                { 
+                                    "ServiceTableColumn",
+                                    new AnnotationValues(oldValue: null, newValue: "Id")
+                                },
+                            }),
+                        UpdatedAt = c.DateTimeOffset(precision: 7,
+                            annotations: new Dictionary<string, AnnotationValues>
+                            {
+                                { 
+                                    "ServiceTableColumn",
+                                    new AnnotationValues(oldValue: null, newValue: "UpdatedAt")
+                                },
+                            }),
+                        Version = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion",
+                            annotations: new Dictionary<string, AnnotationValues>
+                            {
+                                { 
+                                    "ServiceTableColumn",
+                                    new AnnotationValues(oldValue: null, newValue: "Version")
+                                },
+                            }),
                         PublishState = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         Description = c.String(storeType: "ntext"),
@@ -160,7 +197,45 @@ namespace DevEvent.Data.Migrations
             DropTable("dbo.UserLogins");
             DropTable("dbo.UserClaims");
             DropTable("dbo.Users");
-            DropTable("dbo.Events");
+            DropTable("dbo.Events",
+                removedColumnAnnotations: new Dictionary<string, IDictionary<string, object>>
+                {
+                    {
+                        "CreatedAt",
+                        new Dictionary<string, object>
+                        {
+                            { "ServiceTableColumn", "CreatedAt" },
+                        }
+                    },
+                    {
+                        "Deleted",
+                        new Dictionary<string, object>
+                        {
+                            { "ServiceTableColumn", "Deleted" },
+                        }
+                    },
+                    {
+                        "Id",
+                        new Dictionary<string, object>
+                        {
+                            { "ServiceTableColumn", "Id" },
+                        }
+                    },
+                    {
+                        "UpdatedAt",
+                        new Dictionary<string, object>
+                        {
+                            { "ServiceTableColumn", "UpdatedAt" },
+                        }
+                    },
+                    {
+                        "Version",
+                        new Dictionary<string, object>
+                        {
+                            { "ServiceTableColumn", "Version" },
+                        }
+                    },
+                });
             DropTable("dbo.EventRelatedLinks");
         }
     }
