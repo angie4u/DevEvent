@@ -99,6 +99,10 @@
     "deveventstorageName": {
       "type": "string",
       "defaultValue": "[concat('deveventstorage', uniqueString(resourceGroup().id))]"
+    },
+    "MobileAppName": {
+      "type": "string",
+      "defaultValue": "[concat('mobileapp', uniqueString(resourceGroup().id))]"
     }
   },
   "resources": [
@@ -361,7 +365,7 @@
         "action": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
           "sendToServiceOwners": true,
-          "customEmails": [ ]
+          "customEmails": []
         }
       }
     },
@@ -395,7 +399,7 @@
         "action": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
           "sendToServiceOwners": true,
-          "customEmails": [ ]
+          "customEmails": []
         }
       }
     },
@@ -427,6 +431,27 @@
       "properties": {
         "accountType": "[parameters('deveventstorageType')]"
       }
+    },
+    {
+      "name": "[parameters('MobileAppName')]",
+      "type": "Microsoft.Web/sites",
+      "kind": "mobileapp",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName')))]": "Resource",
+        "displayName": "MobileApp"
+      },
+      "properties": {
+        "name": "[parameters('MobileAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+      }
     }
-  ]
+  ],
+  "variables": {
+    "MobileAppName": "[concat('MobileApp', uniqueString(resourceGroup().id))]"
+  }
 }

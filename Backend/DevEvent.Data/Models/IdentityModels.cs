@@ -99,5 +99,7 @@ namespace DevEvent.Data.Models
             modelBuilder.Entity<EventRelatedLink>().HasRequired(t => t.Event).WithMany(t => t.RelatedLinks).HasForeignKey(t => t.EventId);
 
         }
+
+        public System.Data.Entity.DbSet<DevEvent.Data.DataObjects.MobileEvent> MobileEvents { get; set; }
     }
 }
