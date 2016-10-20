@@ -31,9 +31,9 @@
                     required: true,
                     minlength: 5
                 },
-                passwordconfirm: {
+                confirmpassword: {
                     minlength: 5,
-                    equalTo: "#inputPassword"
+                    equalTo: "#password"
                 },
                 name: {
                     required: true,
@@ -50,7 +50,7 @@
                     minlength: "비밀번호는 5글자 이상 입력해주세요"
 
                 },
-                passwordconfirm: {
+                confirmpassword: {
                     minlength: "비밀번호는 5글자 이상 입력해주세요",
                     equalTo: "입력된 비밀번호가 서로 다릅니다",
                 },
