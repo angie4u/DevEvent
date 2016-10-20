@@ -1,4 +1,5 @@
-﻿using DevEvent.Apps.Services;
+﻿using DevEvent.Apps.Models;
+using DevEvent.Apps.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,12 +14,15 @@ namespace DevEvent.Apps.ViewModels
         NavigationService navigationService;
         ApiService apiService;
 
-
+        MobileEventManager manager;
 
         public MainViewModel()
         {
             navigationService = new NavigationService();
             apiService = new ApiService();
+
+            // Init 
+            manager = MobileEventManager.DefaultManager;
 
             LoadMenu();
 
@@ -57,7 +61,6 @@ namespace DevEvent.Apps.ViewModels
                 Title = "Microsoft Developer",
                 PageName = "Microsoft Developer"
             });
-
 
         }
     }

@@ -3,6 +3,51 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -27,6 +72,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -272,6 +331,62 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "runtime.native.System.IO.Compression/4.1.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
@@ -294,6 +409,43 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -441,6 +593,18 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -1417,6 +1581,35 @@
           "lib/win8/_._": {}
         }
       },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assetType": "runtime",
+            "rid": "aot"
+          },
+          "runtimes/unix/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -2055,6 +2248,51 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -2079,6 +2317,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -2272,6 +2524,62 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "runtime.any.System.Collections/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -2451,6 +2759,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -2574,6 +2900,43 @@
       "runtime.win8-arm.runtime.native.System.IO.Compression/4.0.1": {
         "native": {
           "runtimes/win8-arm/native/clrcompression.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -2716,6 +3079,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -3589,6 +3965,21 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
@@ -4187,6 +4578,51 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -4211,6 +4647,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -4403,6 +4853,62 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -4629,6 +5135,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -4745,6 +5269,43 @@
         },
         "native": {
           "runtimes/win8-arm-aot/native/_._": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -4887,6 +5448,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -5760,6 +6334,21 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
@@ -6358,6 +6947,51 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -6382,6 +7016,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -6579,6 +7227,62 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "runtime.any.System.Collections/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -6758,6 +7462,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -6886,6 +7608,43 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -7028,6 +7787,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -7901,6 +8673,21 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
@@ -8499,6 +9286,51 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -8523,6 +9355,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -8719,6 +9565,62 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -8945,6 +9847,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -9066,6 +9986,43 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -9208,6 +10165,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -10083,6 +11053,21 @@
           "lib/win8/_._": {}
         }
       },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        }
+      },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -10679,6 +11664,51 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -10703,6 +11733,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -10900,6 +11944,62 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      },
       "runtime.any.System.Collections/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -11079,6 +12179,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -11207,6 +12325,43 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -11349,6 +12504,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -12224,6 +13392,21 @@
           "lib/win8/_._": {}
         }
       },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        }
+      },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -12820,6 +14003,51 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
+      "Microsoft.Azure.Mobile.Client/3.0.3": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        },
+        "runtime": {
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll": {},
+          "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll": {}
+        }
+      },
+      "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+        "dependencies": {
+          "Microsoft.Azure.Mobile.Client": "3.0.3",
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
+          "Newtonsoft.Json": "6.0.4",
+          "SQLitePCLRaw.bundle_green": "1.0.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        },
+        "runtime": {
+          "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll": {}
+        }
+      },
+      "Microsoft.Bcl/1.1.10": {
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/_._": {}
+        },
+        "runtime": {
+          "lib/win8/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.21": {},
       "Microsoft.CSharp/4.0.1": {
         "dependencies": {
           "System.Collections": "4.0.11",
@@ -12844,6 +14072,20 @@
         },
         "runtime": {
           "lib/netcore50/Microsoft.CSharp.dll": {}
+        }
+      },
+      "Microsoft.Net.Http/2.2.29": {
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/win8/System.Net.Http.Extensions.dll": {},
+          "lib/win8/System.Net.Http.Primitives.dll": {}
         }
       },
       "Microsoft.NETCore/5.0.2": {
@@ -13040,6 +14282,62 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "NETStandard.Library/1.6.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.Win32.Primitives": "4.0.1",
+          "System.AppContext": "4.1.0",
+          "System.Collections": "4.0.11",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Console": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.0.11",
+          "System.Globalization.Calendars": "4.0.1",
+          "System.IO": "4.1.0",
+          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression.ZipFile": "4.0.1",
+          "System.IO.FileSystem": "4.0.1",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Net.Http": "4.1.0",
+          "System.Net.Primitives": "4.0.11",
+          "System.Net.Sockets": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.0.0",
+          "System.Runtime.Numerics": "4.0.1",
+          "System.Security.Cryptography.Algorithms": "4.2.0",
+          "System.Security.Cryptography.Encoding": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0",
+          "System.Security.Cryptography.X509Certificates": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Text.RegularExpressions": "4.1.0",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "System.Threading.Timer": "4.0.1",
+          "System.Xml.ReaderWriter": "4.0.11",
+          "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "Newtonsoft.Json/9.0.1": {
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
       "runtime.aot.System.Collections/4.0.10": {
@@ -13266,6 +14564,24 @@
           "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
+      "runtime.win.System.Console/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.IO.FileSystem.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Text.Encoding.Extensions": "4.0.11",
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard/_._": {}
+        },
+        "runtime": {
+          "runtimes/win/lib/netcore50/System.Console.dll": {}
+        }
+      },
       "runtime.win.System.Diagnostics.Debug/4.0.11": {
         "compile": {
           "ref/netstandard/_._": {}
@@ -13387,6 +14703,43 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/1.0.0": {
+        "dependencies": {
+          "SQLitePCLRaw.core": "1.0.0",
+          "SQLitePCLRaw.lib.e_sqlite3.v140": "1.0.0",
+          "SQLitePCLRaw.provider.e_sqlite3.uwp10": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.batteries_green.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {},
+      "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "SQLitePCLRaw.core": "1.0.0"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -13529,6 +14882,19 @@
         },
         "runtime": {
           "lib/netcore50/System.ComponentModel.EventBasedAsync.dll": {}
+        }
+      },
+      "System.Console/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "runtime.win.System.Console": "4.0.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Console.dll": {}
         }
       },
       "System.Data.Common/4.1.0": {
@@ -14402,6 +15768,21 @@
         },
         "runtime": {
           "lib/win8/_._": {}
+        }
+      },
+      "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "System.Reflection": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll": {}
+        },
+        "runtime": {
+          "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll": {}
         }
       },
       "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
@@ -15001,6 +16382,161 @@
     }
   },
   "libraries": {
+    "Microsoft.Azure.Mobile.Client/3.0.3": {
+      "sha512": "7JoZIO+zC8LpD9/Pi5cKa1tq+0ujTQeZpxFZmMXz7x6ma2kpTfIUE7WFKIwt3l7z9T4FyHfKlX8/tqjO9ObR2A==",
+      "type": "package",
+      "path": "Microsoft.Azure.Mobile.Client/3.0.3",
+      "files": [
+        "Microsoft.Azure.Mobile.Client.3.0.3.nupkg.sha512",
+        "Microsoft.Azure.Mobile.Client.nuspec",
+        "lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/Xamarin.iOS10/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/monoandroid/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/monoandroid/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/monoandroid/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/monoandroid/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/monotouch/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/monotouch/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/monotouch/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/monotouch/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/net45/Microsoft.WindowsAzure.Mobile.Ext.XML",
+        "lib/net45/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/net45/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/net45/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.pri",
+        "lib/netcore45/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/netcore45/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/netcore45/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/portable-win+net45+wp8+wpa81+monotouch+monoandroid/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/portable-win+net45+wp8+wpa81+monotouch+monoandroid/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.UI.dll",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.UI.xml",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/wp8/Microsoft.WindowsAzure.Mobile.xml",
+        "lib/wpa81/Microsoft.WindowsAzure.Mobile.Ext.dll",
+        "lib/wpa81/Microsoft.WindowsAzure.Mobile.Ext.xml",
+        "lib/wpa81/Microsoft.WindowsAzure.Mobile.dll",
+        "lib/wpa81/Microsoft.WindowsAzure.Mobile.xml"
+      ]
+    },
+    "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3": {
+      "sha512": "DARrDwkERhJpEbCgmHSKICghqpF/jKSKZQ6b8znFjqBzWhgQkkjg537k0Ez6Yd6ozhvROWnk069tMFvi/S5YDw==",
+      "type": "package",
+      "path": "Microsoft.Azure.Mobile.Client.SQLiteStore/3.0.3",
+      "files": [
+        "Microsoft.Azure.Mobile.Client.SQLiteStore.3.0.3.nupkg.sha512",
+        "Microsoft.Azure.Mobile.Client.SQLiteStore.nuspec",
+        "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.dll",
+        "lib/portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10/Microsoft.WindowsAzure.Mobile.SQLiteStore.xml"
+      ]
+    },
+    "Microsoft.Bcl/1.1.10": {
+      "sha512": "+tTqoh/M1pyL8El3qLy30EcwnAtyvFoDZJtdG9Cbg/WdFbh4N8kyrq198XHuEL7lnJbeD0DRO8jcX5IIOh05cQ==",
+      "type": "package",
+      "path": "Microsoft.Bcl/1.1.10",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Bcl.1.1.10.nupkg.sha512",
+        "Microsoft.Bcl.nuspec",
+        "lib/Xamarin.iOS10/_._",
+        "lib/monoandroid/_._",
+        "lib/monotouch/_._",
+        "lib/net40/System.IO.dll",
+        "lib/net40/System.IO.xml",
+        "lib/net40/System.Runtime.dll",
+        "lib/net40/System.Runtime.xml",
+        "lib/net40/System.Threading.Tasks.dll",
+        "lib/net40/System.Threading.Tasks.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net45/_._",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8/System.IO.dll",
+        "lib/portable-net40+sl4+win8/System.IO.xml",
+        "lib/portable-net40+sl4+win8/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8/System.IO.dll",
+        "lib/portable-net40+win8/System.IO.xml",
+        "lib/portable-net40+win8/System.Runtime.dll",
+        "lib/portable-net40+win8/System.Runtime.xml",
+        "lib/portable-net40+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8/ensureRedirect.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/portable-net451+win81+wpa81/_._",
+        "lib/portable-net451+win81/_._",
+        "lib/portable-win81+wp81+wpa81/_._",
+        "lib/sl4-windowsphone71/System.IO.dll",
+        "lib/sl4-windowsphone71/System.IO.xml",
+        "lib/sl4-windowsphone71/System.Runtime.dll",
+        "lib/sl4-windowsphone71/System.Runtime.xml",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/ensureRedirect.xml",
+        "lib/sl4/System.IO.dll",
+        "lib/sl4/System.IO.xml",
+        "lib/sl4/System.Runtime.dll",
+        "lib/sl4/System.Runtime.xml",
+        "lib/sl4/System.Threading.Tasks.dll",
+        "lib/sl4/System.Threading.Tasks.xml",
+        "lib/sl5/System.IO.dll",
+        "lib/sl5/System.IO.xml",
+        "lib/sl5/System.Runtime.dll",
+        "lib/sl5/System.Runtime.xml",
+        "lib/sl5/System.Threading.Tasks.dll",
+        "lib/sl5/System.Threading.Tasks.xml",
+        "lib/win8/_._",
+        "lib/wp8/_._",
+        "lib/wpa81/_._"
+      ]
+    },
+    "Microsoft.Bcl.Build/1.0.21": {
+      "sha512": "sgHu4mIt0+NVGyI12Bj4hLPypNK55UOH+ologj2LqDCjxq3EbIxe/uAtHjY+fEwbE1dtsAHG8SXHf+V/EYbKTg==",
+      "type": "package",
+      "path": "Microsoft.Bcl.Build/1.0.21",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Bcl.Build.1.0.21.nupkg.sha512",
+        "Microsoft.Bcl.Build.nuspec",
+        "build/Microsoft.Bcl.Build.Tasks.dll",
+        "build/Microsoft.Bcl.Build.targets"
+      ]
+    },
     "Microsoft.CSharp/4.0.1": {
       "sha512": "17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "type": "package",
@@ -15056,6 +16592,73 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "Microsoft.Net.Http/2.2.29": {
+      "sha512": "fc4CPEewJ30Xgal+fSq1lYIBt582A7eKlAL7O4HXiYAiTp2VTnA4osSvk7T2n8aS4xTCPVJusQk3yKLT0XSpkg==",
+      "type": "package",
+      "path": "Microsoft.Net.Http/2.2.29",
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Net.Http.2.2.29.nupkg.sha512",
+        "Microsoft.Net.Http.nuspec",
+        "lib/Xamarin.iOS10/System.Net.Http.Extensions.XML",
+        "lib/Xamarin.iOS10/System.Net.Http.Extensions.dll",
+        "lib/Xamarin.iOS10/System.Net.Http.Primitives.dll",
+        "lib/Xamarin.iOS10/System.Net.Http.Primitives.xml",
+        "lib/monoandroid/System.Net.Http.Extensions.XML",
+        "lib/monoandroid/System.Net.Http.Extensions.dll",
+        "lib/monoandroid/System.Net.Http.Primitives.dll",
+        "lib/monoandroid/System.Net.Http.Primitives.xml",
+        "lib/monotouch/System.Net.Http.Extensions.XML",
+        "lib/monotouch/System.Net.Http.Extensions.dll",
+        "lib/monotouch/System.Net.Http.Primitives.dll",
+        "lib/monotouch/System.Net.Http.Primitives.xml",
+        "lib/net40/System.Net.Http.Extensions.XML",
+        "lib/net40/System.Net.Http.Extensions.dll",
+        "lib/net40/System.Net.Http.Primitives.dll",
+        "lib/net40/System.Net.Http.Primitives.xml",
+        "lib/net40/System.Net.Http.WebRequest.dll",
+        "lib/net40/System.Net.Http.WebRequest.xml",
+        "lib/net40/System.Net.Http.dll",
+        "lib/net40/System.Net.Http.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net45/System.Net.Http.Extensions.XML",
+        "lib/net45/System.Net.Http.Extensions.dll",
+        "lib/net45/System.Net.Http.Primitives.dll",
+        "lib/net45/System.Net.Http.Primitives.xml",
+        "lib/net45/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.xml",
+        "lib/portable-net45+win8+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.xml",
+        "lib/portable-net45+win8/ensureRedirect.xml",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.xml",
+        "lib/win8/System.Net.Http.Extensions.XML",
+        "lib/win8/System.Net.Http.Extensions.dll",
+        "lib/win8/System.Net.Http.Primitives.dll",
+        "lib/win8/System.Net.Http.Primitives.xml",
+        "lib/wpa81/System.Net.Http.Extensions.XML",
+        "lib/wpa81/System.Net.Http.Extensions.dll",
+        "lib/wpa81/System.Net.Http.Primitives.dll",
+        "lib/wpa81/System.Net.Http.Primitives.xml"
       ]
     },
     "Microsoft.NETCore/5.0.2": {
@@ -15301,6 +16904,41 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "NETStandard.Library/1.6.0": {
+      "sha512": "ypsCvIdCZ4IoYASJHt6tF2fMo7N30NLgV1EbmC+snO490OMl9FvVxmumw14rhReWU3j3g7BYudG6YCrchwHJlA==",
+      "type": "package",
+      "path": "NETStandard.Library/1.6.0",
+      "files": [
+        "NETStandard.Library.1.6.0.nupkg.sha512",
+        "NETStandard.Library.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt"
+      ]
+    },
+    "Newtonsoft.Json/9.0.1": {
+      "sha512": "U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
+      "type": "package",
+      "path": "Newtonsoft.Json/9.0.1",
+      "files": [
+        "Newtonsoft.Json.9.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "tools/install.ps1"
       ]
     },
     "runtime.any.System.Collections/4.0.11": {
@@ -15987,6 +17625,21 @@
         "runtimes/win/lib/netstandard1.3/Microsoft.Win32.Primitives.dll"
       ]
     },
+    "runtime.win.System.Console/4.0.0": {
+      "sha512": "xiO5b50KA3Z7BOfWK7GLYLN2dfJa/BoDyI0XhNyOwXvAXWvubDyAF61YMnWl/q+j2WopSAXGo12kTpjxmlyCyg==",
+      "type": "package",
+      "path": "runtime.win.System.Console/4.0.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "ref/netstandard/_._",
+        "runtime.win.System.Console.4.0.0.nupkg.sha512",
+        "runtime.win.System.Console.nuspec",
+        "runtimes/win/lib/net/_._",
+        "runtimes/win/lib/netcore50/System.Console.dll",
+        "runtimes/win/lib/netstandard1.3/System.Console.dll"
+      ]
+    },
     "runtime.win.System.Diagnostics.Debug/4.0.11": {
       "sha512": "q8Fm954ezFLfmG0tHNUmsNy+qaEjWtWqYhWh3cGSVjtJwkcBsfigWCh+fdaIVZ9K7m+6lgb3ElL2BBU6G+RijA==",
       "type": "package",
@@ -16263,6 +17916,80 @@
         "runtime.win8-arm.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
         "runtime.win8-arm.runtime.native.System.IO.Compression.nuspec",
         "runtimes/win8-arm/native/clrcompression.dll"
+      ]
+    },
+    "SQLitePCLRaw.bundle_green/1.0.0": {
+      "sha512": "MS0nWvHYuSZvENiMXMfj/jr7dACqOFSBXE1fuUEwMsf/IDXPx/4a1IaZqb+A2IcouzLrA8JI1D4yGjxvV3QWDA==",
+      "type": "package",
+      "path": "SQLitePCLRaw.bundle_green/1.0.0",
+      "files": [
+        "SQLitePCLRaw.bundle_green.1.0.0.nupkg.sha512",
+        "SQLitePCLRaw.bundle_green.nuspec",
+        "build/wp8/SQLitePCLRaw.bundle_green.targets",
+        "build/wp80/arm/SQLitePCLRaw.batteries_green.dll",
+        "build/wp80/x86/SQLitePCLRaw.batteries_green.dll",
+        "lib/MonoAndroid/SQLitePCLRaw.batteries_green.dll",
+        "lib/MonoTouch/SQLitePCLRaw.batteries_green.dll",
+        "lib/Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll",
+        "lib/net35/SQLitePCLRaw.batteries_green.dll",
+        "lib/net40/SQLitePCLRaw.batteries_green.dll",
+        "lib/net45/SQLitePCLRaw.batteries_green.dll",
+        "lib/netstandard1.1/SQLitePCLRaw.batteries_green.dll",
+        "lib/portable-net40+sl5+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll",
+        "lib/portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.batteries_green.dll",
+        "lib/uap10.0/SQLitePCLRaw.batteries_green.dll",
+        "lib/win8/SQLitePCLRaw.batteries_green.dll",
+        "lib/win81/SQLitePCLRaw.batteries_green.dll",
+        "lib/wp8/_._",
+        "lib/wpa81/SQLitePCLRaw.batteries_green.dll"
+      ]
+    },
+    "SQLitePCLRaw.core/1.0.0": {
+      "sha512": "8tY6LQKKX6aEC/hbyNP4PkAnNrVygrzVr2W94mg8zQOwN0M51nDaFEGLYAp8kgEdreUmwCu+79vliq/WcefGZQ==",
+      "type": "package",
+      "path": "SQLitePCLRaw.core/1.0.0",
+      "files": [
+        "SQLitePCLRaw.core.1.0.0.nupkg.sha512",
+        "SQLitePCLRaw.core.nuspec",
+        "lib/MonoAndroid/SQLitePCLRaw.core.dll",
+        "lib/MonoTouch/SQLitePCLRaw.core.dll",
+        "lib/Xamarin.iOS10/SQLitePCLRaw.core.dll",
+        "lib/net35/SQLitePCLRaw.core.dll",
+        "lib/net40/SQLitePCLRaw.core.dll",
+        "lib/net45/SQLitePCLRaw.core.dll",
+        "lib/netstandard1.0/SQLitePCLRaw.core.dll",
+        "lib/netstandard1.1/SQLitePCLRaw.core.dll",
+        "lib/portable-net40+sl5+netcore45+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.core.dll",
+        "lib/portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.core.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid10+MonoTouch10+Xamarin.iOS10/SQLitePCLRaw.core.dll",
+        "lib/uap10.0/SQLitePCLRaw.core.dll",
+        "lib/win8/SQLitePCLRaw.core.dll",
+        "lib/win81/SQLitePCLRaw.core.dll",
+        "lib/wpa81/SQLitePCLRaw.core.dll"
+      ]
+    },
+    "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0": {
+      "sha512": "39UDEymjBjnamJ2bj/sSefDba63WTSCLIryXnw5xgJAEyBzPivCoZI8zbbo8MtyBo+WmJfrQXwJ5Rxenzg+rWw==",
+      "type": "package",
+      "path": "SQLitePCLRaw.lib.e_sqlite3.v140/1.0.0",
+      "files": [
+        "SQLitePCLRaw.lib.e_sqlite3.v140.1.0.0.nupkg.sha512",
+        "SQLitePCLRaw.lib.e_sqlite3.v140.nuspec",
+        "build/SQLitePCLRaw.lib.e_sqlite3.v140.targets",
+        "build/native/sqlite3/v140/arm/e_sqlite3.dll",
+        "build/native/sqlite3/v140/x64/e_sqlite3.dll",
+        "build/native/sqlite3/v140/x86/e_sqlite3.dll"
+      ]
+    },
+    "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0": {
+      "sha512": "GtC9Zib0YTQMPFFCUqAhySjkvfOep5Pe6IItq8BPtpxxkGFhI+guTzd52NHIzdDVz4u9yQkpekUx9QDafg9ekA==",
+      "type": "package",
+      "path": "SQLitePCLRaw.provider.e_sqlite3.uwp10/1.0.0",
+      "files": [
+        "SQLitePCLRaw.provider.e_sqlite3.uwp10.1.0.0.nupkg.sha512",
+        "SQLitePCLRaw.provider.e_sqlite3.uwp10.nuspec",
+        "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -16748,6 +18475,42 @@
         "ref/win8/_._",
         "ref/wp80/_._",
         "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._"
+      ]
+    },
+    "System.Console/4.0.0": {
+      "sha512": "qSKUSOIiYA/a0g5XXdxFcUFmv1hNICBD7QZ0QhGYVipPIhvpiydY8VZqr1thmCXvmn8aipMg64zuanB4eotK9A==",
+      "type": "package",
+      "path": "System.Console/4.0.0",
+      "files": [
+        "System.Console.4.0.0.nupkg.sha512",
+        "System.Console.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Console.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Console.dll",
+        "ref/netstandard1.3/System.Console.dll",
+        "ref/netstandard1.3/System.Console.xml",
+        "ref/netstandard1.3/de/System.Console.xml",
+        "ref/netstandard1.3/es/System.Console.xml",
+        "ref/netstandard1.3/fr/System.Console.xml",
+        "ref/netstandard1.3/it/System.Console.xml",
+        "ref/netstandard1.3/ja/System.Console.xml",
+        "ref/netstandard1.3/ko/System.Console.xml",
+        "ref/netstandard1.3/ru/System.Console.xml",
+        "ref/netstandard1.3/zh-hans/System.Console.xml",
+        "ref/netstandard1.3/zh-hant/System.Console.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
@@ -19395,6 +21158,38 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
+    "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
+      "sha512": "hWPhJxc453RCa8Z29O91EmfGeZIHX1ZH2A8L6lYQVSaKzku2DfArSfMEb1/MYYzPQRJZeu0c9dmYeJKxW5Fgng==",
+      "type": "package",
+      "path": "System.Runtime.InteropServices.RuntimeInformation/4.0.0",
+      "files": [
+        "System.Runtime.InteropServices.RuntimeInformation.4.0.0.nupkg.sha512",
+        "System.Runtime.InteropServices.RuntimeInformation.nuspec",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/win8/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/wpa81/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/unix/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/net45/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/netcore50/System.Runtime.InteropServices.RuntimeInformation.dll",
+        "runtimes/win/lib/netstandard1.1/System.Runtime.InteropServices.RuntimeInformation.dll"
+      ]
+    },
     "System.Runtime.InteropServices.WindowsRuntime/4.0.1": {
       "sha512": "oIIXM4w2y3MiEZEXA+RTtfPV+SZ1ymbFdWppHlUciNdNIL0/Uo3HW9q9iN2O7T7KUmRdvjA7C2Gv4exAyW4zEQ==",
       "type": "package",
@@ -21388,7 +23183,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Microsoft.Azure.Mobile.Client >= 3.0.3",
+      "Microsoft.Azure.Mobile.Client.SQLiteStore >= 3.0.3",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
+      "Newtonsoft.Json >= 9.0.1",
       "WindowsAzure.Messaging.Managed >= 0.1.7.9",
       "Xamarin.Forms >= 2.3.2.127"
     ],
