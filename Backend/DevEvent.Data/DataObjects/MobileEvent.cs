@@ -2,6 +2,7 @@
 using Microsoft.Azure.Mobile.Server;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace DevEvent.Data.DataObjects
 {
     public class MobileEvent : EntityData
     {
+        [NotMapped]
+        public long EventId { get; set; }
         /// <summary>
         /// 배포(Publish) 
         /// </summary>
@@ -77,14 +80,6 @@ namespace DevEvent.Data.DataObjects
         /// </summary>
         public string FeaturedImageUrl { get; set; }
 
-        /// <summary>
-        /// 생성일
-        /// </summary>
-        public DateTimeOffset CreatedTime { get; set; }
-        /// <summary>
-        /// 수정일
-        /// </summary>
-        public DateTimeOffset? UpdatedTime { get; set; }
 
         /// <summary>
         ///  만든사람 이름

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using DevEvent.Data.Models;
 using Microsoft.Azure.Mobile.Server;
+using Microsoft.Azure.Mobile.Server.Tables;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -31,6 +33,19 @@ namespace DevEvent.Data.DataObjects
                 throw new HttpResponseException(request.CreateNotFoundResponse());
             }
             return eventid;
+        }
+
+        /// <summary>
+        /// AutoMapper.QueryableExtensions.Extensions.Project 에서 System.MissingMethodException 이 발생하는 오류가 있어 
+        /// Query를 재정의 하고 github 원본의 코드를 가져와서 넣고 해결함. 원인은 모름
+        /// 관련 github issue: https://github.com/Azure/azure-mobile-apps-net-server/issues/96 
+        /// </summary>
+        /// <returns></returns>
+        public override IQueryable<MobileEvent> Query()
+        {
+            IQueryable<MobileEvent> query = this.Context.Set<Event>().ProjectTo<MobileEvent>();
+            query = TableUtils.ApplyDeletedFilter(query, this.IncludeDeleted);
+            return query;
         }
 
 

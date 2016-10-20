@@ -88,6 +88,6 @@ namespace DevEvent.Data.ViewModels
 
         public HttpPostedFileBase FeaturedImageFile { get; set; }
 
-        public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
+        //public IList<EventRelatedLinkViewModel> RelatedLinks { get; set; }
     }
 }

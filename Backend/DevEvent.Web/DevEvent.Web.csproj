@@ -265,7 +265,6 @@
     <Compile Include="Controllers\AdminEventController.cs" />
     <Compile Include="Controllers\AdminPeopleController.cs" />
     <Compile Include="Controllers\api\EventsController.cs" />
-    <Compile Include="Controllers\api\MobileEventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1054,6 +1053,7 @@
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>

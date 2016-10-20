@@ -128,6 +128,6 @@ namespace DevEvent.Data.Models
         /// <summary>
         /// 관련 링크들
         /// </summary>
-        public ICollection<EventRelatedLink> RelatedLinks { get; set; }
+        //public ICollection<EventRelatedLink> RelatedLinks { get; set; }
     }
 }
