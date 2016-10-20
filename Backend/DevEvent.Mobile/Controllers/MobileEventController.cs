@@ -15,13 +15,14 @@ namespace DevEvent.Mobile.Controllers
         {
             base.Initialize(controllerContext);
             ApplicationDbContext context = new ApplicationDbContext();
-            DomainManager = new EntityDomainManager<MobileEvent>(context, Request);
+            DomainManager = new EventDtoDomainManager(context, Request);
         }
 
         // GET tables/MobileEvent
         public IQueryable<MobileEvent> GetAllMobileEvent()
         {
-            return Query(); 
+            return DomainManager.Query();
+            //return Query(); 
         }
 
         // GET tables/MobileEvent/48D68C86-6EA6-4C25-AA33-223FC9A27959

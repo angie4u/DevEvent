@@ -30,7 +30,7 @@ namespace DevEvent.Data.Services
         /// <returns></returns>
         public async Task<EventDetailViewModel> GetEventDetailAsync(long id)
         {
-            var item = await DbContext.Events.Include(x => x.CreateUser).Include(x => x.RelatedLinks).Where(x => x.EventId == id).Select(x => new EventDetailViewModel
+            var item = await DbContext.Events.Include(x => x.CreateUser).Where(x => x.EventId == id).Select(x => new EventDetailViewModel
             {
                 Address = x.Address,
                 Audience = x.Audience,
@@ -43,14 +43,14 @@ namespace DevEvent.Data.Services
                 Latitude = x.Latitude,
                 Longitude = x.Longitude,
                 RegistrationUrl = x.RegistrationUrl,
-                RelatedLinks = x.RelatedLinks.Select(r => new EventRelatedLinkViewModel
-                {
-                    CreatedTime = r.CreatedTime,
-                    Description = r.Description,
-                    Id = r.Id,
-                    LinkType = r.LinkType,
-                    Url = r.Url
-                }).ToList(),
+                //RelatedLinks = x.RelatedLinks.Select(r => new EventRelatedLinkViewModel
+                //{
+                //    CreatedTime = r.CreatedTime,
+                //    Description = r.Description,
+                //    Id = r.Id,
+                //    LinkType = r.LinkType,
+                //    Url = r.Url
+                //}).ToList(),
                 StartDate = x.StartDate,
                 ThumbnailImageUrl = x.ThumbnailImageUrl,
                 Title = x.Title,
@@ -131,20 +131,20 @@ namespace DevEvent.Data.Services
             var item = this.DbContext.Events.Where(x => x.EventId == id).FirstOrDefault();
             if (item == null) throw new ArgumentException("No Event with id " + id);
 
-            // Remove related Links
-            if (item.RelatedLinks != null && item.RelatedLinks.Count() > 0)
-            {
-                EventRelatedLink[] links = new EventRelatedLink[item.RelatedLinks.Count];
-                item.RelatedLinks.CopyTo(links, 0);
-                foreach (var link in links)
-                {
-                    var rlink = this.DbContext.EventRelatedLinks.Where(x => x.Id == link.Id).FirstOrDefault();
-                    if (rlink != null)
-                    {
-                        this.DbContext.EventRelatedLinks.Remove(rlink);
-                    }
-                }
-            }
+            //// Remove related Links
+            //if (item.RelatedLinks != null && item.RelatedLinks.Count() > 0)
+            //{
+            //    EventRelatedLink[] links = new EventRelatedLink[item.RelatedLinks.Count];
+            //    item.RelatedLinks.CopyTo(links, 0);
+            //    foreach (var link in links)
+            //    {
+            //        var rlink = this.DbContext.EventRelatedLinks.Where(x => x.Id == link.Id).FirstOrDefault();
+            //        if (rlink != null)
+            //        {
+            //            this.DbContext.EventRelatedLinks.Remove(rlink);
+            //        }
+            //    }
+            //}
 
             try
             {
@@ -182,6 +182,9 @@ namespace DevEvent.Data.Services
                 StartDate = model.StartDate,
                 Title = model.Title,
                 Venue = model.Venue,
+                UpdatedAt = DateTimeOffset.Now,
+                CreatedAt = DateTimeOffset.Now,
+                Id = Guid.NewGuid().ToString().ToLower()
             };
 
             // TODO: RelatedLink,

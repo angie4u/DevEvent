@@ -7,6 +7,9 @@ using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
 using Owin;
+using AutoMapper;
+using DevEvent.Data.DataObjects;
+using DevEvent.Data.Models;
 
 namespace DevEvent.Mobile
 {
@@ -22,6 +25,16 @@ namespace DevEvent.Mobile
 
             // Use Entity Framework Code First to create database tables based on your DbContext
             //Database.SetInitializer(new MobileServiceInitializer());
+
+            // Auto mapping setup
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<MobileEvent, Event>();
+                cfg.CreateMap<Event, MobileEvent>()
+                    .ForMember(dst => dst.CreateUserId, map => map.MapFrom(x => x.CreateUser.Id));
+
+
+            });
 
             MobileAppSettingsDictionary settings = config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 

@@ -63,7 +63,6 @@ namespace DevEvent.Data.Models
 
         public DbSet<Event> Events { get; set; }
 
-        public DbSet<EventRelatedLink> EventRelatedLinks { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -92,14 +91,12 @@ namespace DevEvent.Data.Models
             modelBuilder.Entity<Event>().ToTable("Events");
             modelBuilder.Entity<Event>().Property(t => t.Title).IsRequired();
             modelBuilder.Entity<Event>().HasRequired(t => t.CreateUser).WithMany(t => t.Events).HasForeignKey(t => t.CreateUserId);
-            modelBuilder.Entity<Event>().HasMany(t => t.RelatedLinks).WithRequired(t => t.Event).HasForeignKey(t => t.EventId);
+            //modelBuilder.Entity<Event>().HasMany(t => t.RelatedLinks).WithRequired(t => t.Event).HasForeignKey(t => t.EventId);
 
-            modelBuilder.Entity<EventRelatedLink>().ToTable("EventRelatedLinks");
-            modelBuilder.Entity<EventRelatedLink>().Property(t => t.Url).IsRequired();
-            modelBuilder.Entity<EventRelatedLink>().HasRequired(t => t.Event).WithMany(t => t.RelatedLinks).HasForeignKey(t => t.EventId);
+            //modelBuilder.Entity<EventRelatedLink>().ToTable("EventRelatedLinks");
+            //modelBuilder.Entity<EventRelatedLink>().Property(t => t.Url).IsRequired();
+            //modelBuilder.Entity<EventRelatedLink>().HasRequired(t => t.Event).WithMany(t => t.RelatedLinks).HasForeignKey(t => t.EventId);
 
         }
-
-        public System.Data.Entity.DbSet<DevEvent.Data.DataObjects.MobileEvent> MobileEvents { get; set; }
     }
 }

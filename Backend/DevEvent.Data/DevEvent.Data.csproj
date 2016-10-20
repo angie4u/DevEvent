@@ -156,9 +156,9 @@
   <ItemGroup>
     <Compile Include="DataObjects\EventDtoDomainManager.cs" />
     <Compile Include="DataObjects\MobileEvent.cs" />
-    <Compile Include="Migrations\201610180159509_InitialDb.cs" />
-    <Compile Include="Migrations\201610180159509_InitialDb.Designer.cs">
-      <DependentUpon>201610180159509_InitialDb.cs</DependentUpon>
+    <Compile Include="Migrations\201610200408079_InitialDb.cs" />
+    <Compile Include="Migrations\201610200408079_InitialDb.Designer.cs">
+      <DependentUpon>201610200408079_InitialDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\LinkType.cs" />
@@ -187,8 +187,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610180159509_InitialDb.resx">
-      <DependentUpon>201610180159509_InitialDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610200408079_InitialDb.resx">
+      <DependentUpon>201610200408079_InitialDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

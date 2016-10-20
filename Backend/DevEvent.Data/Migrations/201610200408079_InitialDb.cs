@@ -10,21 +10,6 @@ namespace DevEvent.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.EventRelatedLinks",
-                c => new
-                    {
-                        Id = c.Long(nullable: false, identity: true),
-                        LinkType = c.Int(nullable: false),
-                        Url = c.String(nullable: false),
-                        CreatedTime = c.DateTimeOffset(nullable: false, precision: 7),
-                        Description = c.String(),
-                        EventId = c.Long(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Events", t => t.EventId, cascadeDelete: true)
-                .Index(t => t.EventId);
-            
-            CreateTable(
                 "dbo.Events",
                 c => new
                     {
@@ -177,7 +162,6 @@ namespace DevEvent.Data.Migrations
             DropForeignKey("dbo.UserLogins", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.UserClaims", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
-            DropForeignKey("dbo.EventRelatedLinks", "EventId", "dbo.Events");
             DropForeignKey("dbo.Events", "CreateUserId", "dbo.Users");
             DropIndex("dbo.Roles", "RoleNameIndex");
             DropIndex("dbo.UserRoles", new[] { "IdentityUser_Id" });
@@ -191,7 +175,6 @@ namespace DevEvent.Data.Migrations
             DropIndex("dbo.Events", new[] { "CreateUserId" });
             DropIndex("dbo.Events", new[] { "Id" });
             DropIndex("dbo.Events", new[] { "CreatedAt" });
-            DropIndex("dbo.EventRelatedLinks", new[] { "EventId" });
             DropTable("dbo.Roles");
             DropTable("dbo.UserRoles");
             DropTable("dbo.UserLogins");
@@ -236,7 +219,6 @@ namespace DevEvent.Data.Migrations
                         }
                     },
                 });
-            DropTable("dbo.EventRelatedLinks");
         }
     }
 }
