@@ -14,15 +14,14 @@ namespace DevEvent.Apps.ViewModels
         NavigationService navigationService;
         ApiService apiService;
 
-        MobileEventManager manager;
+        
 
         public MainViewModel()
         {
             navigationService = new NavigationService();
             apiService = new ApiService();
 
-            // Init 
-            manager = MobileEventManager.DefaultManager;
+            
 
             LoadMenu();
 

@@ -1,4 +1,5 @@
-﻿using DevEvent.Apps.Services;
+﻿using DevEvent.Apps.Models;
+using DevEvent.Apps.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,19 @@ namespace DevEvent.Apps.Pages
 {
     public partial class MainPage : ContentPage
     {
+        //MobileEventManager manager;
+
+
         public MainPage()
         {
             InitializeComponent();
             Month.Text = "행사 목록";
             GetEventList();
+
+            // Init 
+            //manager = MobileEventManager.DefaultManager;
+
+            //await manager.GetEventItemsAsync(true);
         }
 
         async void GetEventList()
