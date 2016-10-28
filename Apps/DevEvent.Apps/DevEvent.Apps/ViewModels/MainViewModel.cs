@@ -1,5 +1,6 @@
 ﻿using DevEvent.Apps.Models;
 using DevEvent.Apps.Services;
+using Microsoft.WindowsAzure.MobileServices.Sync;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,26 +14,38 @@ namespace DevEvent.Apps.ViewModels
     {
         NavigationService navigationService;
         ApiService apiService;
-
         
+        MobileEventManager manager;
 
         public MainViewModel()
         {
             navigationService = new NavigationService();
             apiService = new ApiService();
-
             
-
+            // Init 
+            manager = MobileEventManager.DefaultManager;
+            
             LoadMenu();
-
+            GetEventList();
         }
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
+        public ObservableCollection<MainViewModel> Main { get; set; }
+        public ObservableCollection<EventListViewModel> Event { get; set; }
+
+        async void GetEventList()
+        {
+            await manager.GetEventItemsAsync();
+        }
+
+
+        
+
 
         private void LoadMenu()
         {
             Menu = new ObservableCollection<MenuItemViewModel>();
-
+            
             Menu.Add(new MenuItemViewModel()
             {
                 Icon = "ic_action_home",
@@ -62,5 +75,8 @@ namespace DevEvent.Apps.ViewModels
             });
 
         }
+
+        
+       
     }
 }

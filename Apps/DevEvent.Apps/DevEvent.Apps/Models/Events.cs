@@ -1,29 +1,16 @@
-﻿using DevEvent.Apps.Models;
-using DevEvent.Apps.Services;
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEvent.Apps.ViewModels
+namespace DevEvent.Apps.Models
 {
-    public class EventListViewModel
+    public class Events : INotifyPropertyChanged
     {
-        ApiService apiService;
-        MobileEventManager manager;
-        
-        public EventListViewModel()
-        {
-            apiService = new ApiService();
-            manager = MobileEventManager.DefaultManager;
-
-
-        }
-
-        
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
@@ -34,7 +21,7 @@ namespace DevEvent.Apps.ViewModels
         /// <summary>
         /// 배포(Publish) 
         /// </summary>
-        //public PublishState PublishState { get; set; }
+        public PublishState PublishState { get; set; }
 
         /// <summary>
         /// 이벤트 타이틀
@@ -98,6 +85,29 @@ namespace DevEvent.Apps.ViewModels
         /// </summary>
         public string FeaturedImageUrl { get; set; }
 
+        /// <summary>
+        /// 생성일
+        /// </summary>
+        public DateTimeOffset CreatedTime { get; set; }
+        /// <summary>
+        /// 수정일
+        /// </summary>
+        public DateTimeOffset? UpdatedTime { get; set; }
+
+        /// <summary>
+        ///  만든사람 이름
+        /// </summary>
+        public string CreateUserName { get; set; }
+
+        /// <summary>
+        /// 만든사람 아이디
+        /// </summary>
+        public string CreateUserId { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 
     }
