@@ -19,11 +19,13 @@ namespace DevEvent.Apps.Models
 
         private MobileEventManager()
         {
-            this.client = new MobileServiceClient(Constants.ApplicationURL);
+            client = new MobileServiceClient(Constants.ApplicationURL);
             var store = new MobileServiceSQLiteStore("localstore.db");
-            store.DefineTable<MobileEvent>();
-            this.client.SyncContext.InitializeAsync(store);
-            this.eventTable = client.GetSyncTable<MobileEvent>();
+            store.DefineTable<MobileEvent>();            
+            client.SyncContext.InitializeAsync(store);
+            eventTable = client.GetSyncTable<MobileEvent>();     
+            
+
         }
 
         public static MobileEventManager DefaultManager
@@ -54,12 +56,25 @@ namespace DevEvent.Apps.Models
             {
                 if (syncItems)
                 {
-                    await this.SyncAsync();
+                    await SyncAsync();
                 }
+                
+
+                var list = client.GetSyncTable<MobileEvent>();
+
+
+
                 IEnumerable<MobileEvent> items = await eventTable
                                     .Where(x => x.PublishState == PublishState.Published)
                                     .ToEnumerableAsync();
+
+                //var i = eventTable;
+                //IEnumerable<MobileEvent> items2 = await eventTable.ToEnumerableAsync();
+
+
                 return new ObservableCollection<MobileEvent>(items);
+
+
             }
             catch (MobileServiceInvalidOperationException msioe)
             {
@@ -90,19 +105,22 @@ namespace DevEvent.Apps.Models
 
             try
             {
-                await this.client.SyncContext.PushAsync();
-                await this.eventTable.PullAsync(
+                await client.SyncContext.PushAsync();
+                await eventTable.PullAsync(
                     //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
                     //Use a different query name for each unique query in your program
                     "allPublishedItems",
-                    this.eventTable.CreateQuery());
+                    eventTable.CreateQuery());
             }
+            
+            
             catch (MobileServicePushFailedException exc)
             {
                 if (exc.PushResult != null)
                 {
                     syncErrors = exc.PushResult.Errors;
                 }
+                
             }
 
             // Simple error/conflict handling. A real application would handle the various errors like network conditions,

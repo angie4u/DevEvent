@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DevEvent.Apps.Pages.MainPage"
              BackgroundColor="{StaticResource BackgroundColor}"
-             Title="Developer Event"
-             BindingContext="{Binding Main, Source={StaticResource Locator}}">
-  <Grid>
+             Title="Developer Event">
+  
+
+
+
+ <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
@@ -24,7 +27,7 @@
         SeparatorColor="#52656b"
         x:Name="MyList"
         ItemTemplate="{StaticResource ShortListTemplate}"
-        ItemsSource="{Binding EventList}"
+        
         ItemSelected="MyListView_ItemSelected"
         HasUnevenRows="True">
       </ListView>
@@ -33,6 +36,7 @@
 
   </Grid>
 
+  
   <ContentPage.ToolbarItems>
   </ContentPage.ToolbarItems>
 </ContentPage>

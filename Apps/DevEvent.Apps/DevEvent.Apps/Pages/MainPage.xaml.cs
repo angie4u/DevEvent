@@ -4,34 +4,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevEvent.Apps.Models;
 
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace DevEvent.Apps.Pages
 {
     public partial class MainPage : ContentPage
     {
+        MobileEventManager manager;
+
         public MainPage()
         {
             InitializeComponent();
-            Month.Text = "행사 목록";
-            GetEventList();
+
+            manager = MobileEventManager.DefaultManager;
+
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var items = await manager.GetEventItemsAsync(true);
+            MyList.ItemsSource = items;
+
+        }
+
 
         async void GetEventList()
         {
-            ApiService apiService = new ApiService();
-            var list = await apiService.GetAllEvent(DateTime.Now);
 
-            foreach (var item in list)
-            {
-                string ImageURL = "img" + item.ImageNumber + ".png";
-                item.EventTitle = item.EventTitle;
-                item.EventStartDay = item.EventStartDay;
-                item.Description = item.Description;
-                //item.Image = ImageURL;
-            }
-            MyList.ItemsSource = list;
+           
+            //ApiService apiService = new ApiService();
+            //var list = await apiService.GetAllEvent(DateTime.Now);
+            //var list = await apiService.GetMobileEvent();
+
+
+            //foreach (var item in list)
+            //{
+            //    string ImageURL = "img" + item.ImageNumber + ".png";
+            //    item.EventTitle = item.EventTitle;
+            //    item.EventStartDay = item.EventStartDay;
+            //    item.Description = item.Description;
+            //    //item.Image = ImageURL;
+            //}
+            //MyList.ItemsSource = list;
         }
 
         //이벤트 정보 넘겨주는 코드 

@@ -21,16 +21,8 @@ namespace DevEvent.Apps.Pages
         async void GetEventList()
         {
             ApiService apiService = new ApiService();
-            var list = await apiService.GetPastEvent(DateTime.Now);
-
-            foreach (var item in list)
-            {
-                string ImageURL = "img" + item.ImageNumber + ".png";
-                item.EventTitle = item.EventTitle;
-                item.EventStartDay = item.EventStartDay;
-                item.Description = item.Description;
-                //item.Image = ImageURL;
-            }
+            var list = await apiService.GetMobileEvent();
+            
             MyList.ItemsSource = list;
         }
 
