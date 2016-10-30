@@ -23,25 +23,21 @@ namespace DevEvent.Apps.ViewModels
             apiService = new ApiService();
             
             // Init 
-            manager = MobileEventManager.DefaultManager;
             
             LoadMenu();
-            GetEventList();
+            //GetEventList();
         }
 
         public ObservableCollection<MenuItemViewModel> Menu { get; set; }
         public ObservableCollection<MainViewModel> Main { get; set; }
-        public ObservableCollection<EventListViewModel> Event { get; set; }
+        //public ObservableCollection<EventListViewModel> Event { get; set; }
 
-        async void GetEventList()
-        {
-            await manager.GetEventItemsAsync();
-        }
-
-
+        //async void GetEventList()
+        //{
+        //    manager = MobileEventManager.DefaultManager;
+        //    await manager.GetEventItemsAsync();
+        //}   
         
-
-
         private void LoadMenu()
         {
             Menu = new ObservableCollection<MenuItemViewModel>();

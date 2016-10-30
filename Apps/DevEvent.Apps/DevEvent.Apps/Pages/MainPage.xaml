@@ -4,39 +4,28 @@
              x:Class="DevEvent.Apps.Pages.MainPage"
              BackgroundColor="{StaticResource BackgroundColor}"
              Title="Developer Event">
-  
-
-
-
  <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
-    <StackLayout Orientation="Horizontal" Padding="8,8,8,0" HorizontalOptions="Center">
-     
+    <StackLayout Orientation="Horizontal" Padding="8,8,8,0" HorizontalOptions="Center">     
       <Label
         x:Name ="Month"
         VerticalOptions="Center"
-        TextColor="{StaticResource FontColor}"></Label>
-      
+        TextColor="{StaticResource FontColor}"></Label>      
     </StackLayout>
 
     <StackLayout Grid.Row="1" >
       <ListView
         SeparatorColor="#52656b"
         x:Name="MyList"
-        ItemTemplate="{StaticResource ShortListTemplate}"
-        
+        ItemTemplate="{StaticResource ShortListTemplate}"        
         ItemSelected="MyListView_ItemSelected"
         HasUnevenRows="True">
       </ListView>
     </StackLayout>
-
-
-  </Grid>
-
-  
+  </Grid>  
   <ContentPage.ToolbarItems>
   </ContentPage.ToolbarItems>
 </ContentPage>
