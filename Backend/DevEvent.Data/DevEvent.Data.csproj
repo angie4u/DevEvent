@@ -177,9 +177,12 @@
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Models\Enums\EventListFilter.cs" />
     <Compile Include="Services\Interface\IEventService.cs" />
+    <Compile Include="Services\Interface\IMobileUserService.cs" />
     <Compile Include="Services\Interface\IStorageService.cs" />
     <Compile Include="Services\Interface\IThumbnailService.cs" />
+    <Compile Include="Services\MobileUserService.cs" />
     <Compile Include="Services\ThumbnailService.cs" />
+    <Compile Include="ViewModels\AuthenticatedUserViewModel.cs" />
     <Compile Include="ViewModels\EventDetailViewModel.cs" />
     <Compile Include="ViewModels\EventListFilterViewModel.cs" />
     <Compile Include="ViewModels\EventListViewModel.cs" />

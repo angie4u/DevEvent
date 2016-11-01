@@ -43,9 +43,37 @@ namespace DevEvent.Data.DataObjects
         /// <returns></returns>
         public override IQueryable<MobileEvent> Query()
         {
-            IQueryable<MobileEvent> query = this.Context.Set<Event>().ProjectTo<MobileEvent>();
+            var query = this.DbContext.Events.Where(x => x.PublishState == PublishState.Published).Select(x => new MobileEvent
+            {
+                Address = x.Address,
+                Audience = x.Audience,
+                CreatedAt = x.CreatedAt,
+                CreateUserId = x.CreateUserId,
+                CreateUserName = x.CreateUser.Name,
+                Deleted = x.Deleted,
+                Description = x.Description,
+                EndDate = x.EndDate,
+                EventId = x.EventId,
+                FeaturedImageUrl = x.FeaturedImageUrl,
+                Id = x.Id,
+                IsFavorite = x.FavoriteMobileUsers.Where(s => s.sId == this.sId).Any(),  // 이걸 AutoMapper 설정하지 못해서 수동으로 Mapping
+                Latitude = x.Latitude,
+                Longitude = x.Longitude,
+                PublishState = x.PublishState,
+                RegistrationUrl = x.RegistrationUrl,
+                StartDate = x.StartDate,
+                ThumbnailImageUrl = x.ThumbnailImageUrl,
+                Title = x.Title,
+                UpdatedAt = x.UpdatedAt,
+                Venue = x.Venue,
+                Version = x.Version
+            });
             query = TableUtils.ApplyDeletedFilter(query, this.IncludeDeleted);
             return query;
+
+            //IQueryable<MobileEvent> query = this.Context.Set<Event>().ProjectTo<MobileEvent>();
+            //query = TableUtils.ApplyDeletedFilter(query, this.IncludeDeleted);
+            //return query;
         }
 
 
@@ -67,32 +95,75 @@ namespace DevEvent.Data.DataObjects
 
         public override SingleResult<MobileEvent> Lookup(string mobileid)
         {
-            long eventid = GetKey<long>(mobileid);
-            return LookupEntity(c => c.EventId == eventid);
+            var query = GetQuery(mobileid);
+
+            return SingleResult.Create(query);
+
+            //long eventid = GetKey<long>(mobileid);
+            //return LookupEntity(c => c.EventId == eventid);
         }
 
         public override async Task<MobileEvent> UpdateAsync(string mobileid, Delta<MobileEvent> patch)
         {
-            long id = GetKey<long>(mobileid);
+            var mevent = patch.GetEntity();
+            // Get Event 
+            var evt = this.DbContext.Events.Include(x => x.FavoriteMobileUsers).Where(x => x.Id == mobileid).FirstOrDefault();
+            var existed = evt.FavoriteMobileUsers.Where(x => x.sId == this.sId).Any();
 
-            Event existingEvent = await this.DbContext.Set<Event>().FindAsync(id);
+            // Get MobileUser 
+            var muser = this.DbContext.MobileUsers.Where(x => x.sId == this.sId).FirstOrDefault();
 
-            if (existingEvent == null)
+            if (muser == null)
             {
-                throw new HttpResponseException(this.Request.CreateNotFoundResponse());
+                throw new ArgumentNullException("There is no MobileUser. (check the sId in the EventDtoDomainManager");
             }
 
-            MobileEvent existingMobileEvent = Mapper.Map<Event, MobileEvent>(existingEvent);
-            patch.Patch(existingMobileEvent);
-            Mapper.Map<MobileEvent, Event>(existingMobileEvent, existingEvent);
+            if (mevent.IsFavorite == true)
+            {
+                // add
+                if (existed == false) evt.FavoriteMobileUsers.Add(muser);
+            }
+            else
+            {
+                // remove
+                if (existed == true) evt.FavoriteMobileUsers.Remove(muser);
+            }
 
-            await this.SubmitChangesAsync();
+            await this.DbContext.SaveChangesAsync();
 
-            MobileEvent updatedMobileEvent = Mapper.Map<Event, MobileEvent>(existingEvent);
-
-            return updatedMobileEvent;
+            return await GetQuery(mobileid).FirstOrDefaultAsync();
         }
 
         public string sId { get; set; }
+
+        private IQueryable<MobileEvent> GetQuery(string mobileid)
+        {
+            return this.DbContext.Events.Include(x => x.CreateUser).Include(x => x.FavoriteMobileUsers).Where(x => x.Id == mobileid).Select(x => new MobileEvent
+            {
+                Address = x.Address,
+                Audience = x.Audience,
+                CreatedAt = x.CreatedAt,
+                CreateUserId = x.CreateUserId,
+                CreateUserName = x.CreateUser.Name,
+                Deleted = x.Deleted,
+                Description = x.Description,
+                EndDate = x.EndDate,
+                EventId = x.EventId,
+                FeaturedImageUrl = x.FeaturedImageUrl,
+                Id = x.Id,
+                IsFavorite = x.FavoriteMobileUsers.Where(s => s.sId == this.sId).Any(),  // 이걸 AutoMapper 설정하지 못해서 수동으로 Mapping
+                Latitude = x.Latitude,
+                Longitude = x.Longitude,
+                PublishState = x.PublishState,
+                RegistrationUrl = x.RegistrationUrl,
+                StartDate = x.StartDate,
+                ThumbnailImageUrl = x.ThumbnailImageUrl,
+                Title = x.Title,
+                UpdatedAt = x.UpdatedAt,
+                Venue = x.Venue,
+                Version = x.Version
+            });
+        }
+
     }
 }
