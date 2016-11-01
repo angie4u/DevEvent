@@ -160,6 +160,10 @@
     <Compile Include="Migrations\201610200408079_InitialDb.Designer.cs">
       <DependentUpon>201610200408079_InitialDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611010838559_AddMobileUser.cs" />
+    <Compile Include="Migrations\201611010838559_AddMobileUser.Designer.cs">
+      <DependentUpon>201611010838559_AddMobileUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Enums\LinkType.cs" />
     <Compile Include="Models\Enums\PublishState.cs" />
@@ -167,6 +171,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\EventRelatedLink.cs" />
+    <Compile Include="Models\MobileUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AzureStorageService.cs" />
     <Compile Include="Services\EventService.cs" />
@@ -189,6 +194,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610200408079_InitialDb.resx">
       <DependentUpon>201610200408079_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611010838559_AddMobileUser.resx">
+      <DependentUpon>201611010838559_AddMobileUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
