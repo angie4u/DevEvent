@@ -28,13 +28,13 @@ namespace DevEvent.Mobile.Controllers
         // GET tables/MobileEvent/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public SingleResult<MobileEvent> GetMobileEvent(string id)
         {
-            return Lookup(id);
+            return DomainManager.Lookup(id);
         }
 
         // PATCH tables/MobileEvent/48D68C86-6EA6-4C25-AA33-223FC9A27959
         public Task<MobileEvent> PatchMobileEvent(string id, Delta<MobileEvent> patch)
         {
-             return UpdateAsync(id, patch);
+             return DomainManager.UpdateAsync(id, patch);
         }
 
         // POST tables/MobileEvent

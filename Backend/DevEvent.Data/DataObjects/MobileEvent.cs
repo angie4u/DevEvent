@@ -91,5 +91,10 @@ namespace DevEvent.Data.DataObjects
         /// </summary>
         public string CreateUserId { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsFavorite { get; set; }
+
     }
 }

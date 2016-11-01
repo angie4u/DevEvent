@@ -11,6 +11,7 @@ namespace DevEvent.Apps.Models
 {
     public class MobileEvent : INotifyPropertyChanged
     {
+        private bool isFavorite;
 
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -105,10 +106,33 @@ namespace DevEvent.Apps.Models
         /// </summary>
         public string CreateUserId { get; set; }
 
+        /// <summary>
+        /// Favorite 인지 아닌지
+        /// </summary>
+        public bool IsFavorite
+        {
+            get { return isFavorite; }
+            set
+            {
+                IsFavorite = value;
+                OnPropertyChanged("IsFavorite");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //private void OnPropertyChanged(string propertyName) =>
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        // Create the OnPropertyChanged method to raise the event
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
     }
 }

@@ -92,5 +92,7 @@ namespace DevEvent.Data.DataObjects
 
             return updatedMobileEvent;
         }
+
+        public string sId { get; set; }
     }
 }

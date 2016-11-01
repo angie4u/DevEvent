@@ -23,9 +23,9 @@ namespace DevEvent.Apps.Models
             var store = new MobileServiceSQLiteStore("localstore.db");
             store.DefineTable<MobileEvent>();            
             client.SyncContext.InitializeAsync(store);
+            // 로컬 SQLite에서 데이터 가져온다. 
+            // 아직은 로컬 데이터이고 SyncAsync() 를 해야만 서버측 데이터가 싱크
             eventTable = client.GetSyncTable<MobileEvent>();     
-            
-
         }
 
         public static MobileEventManager DefaultManager
@@ -58,11 +58,8 @@ namespace DevEvent.Apps.Models
                 {
                     await SyncAsync();
                 }
-                
 
                 var list = client.GetSyncTable<MobileEvent>();
-
-
 
                 IEnumerable<MobileEvent> items = await eventTable
                                     .Where(x => x.PublishState == PublishState.Published)
@@ -71,10 +68,7 @@ namespace DevEvent.Apps.Models
                 //var i = eventTable;
                 //IEnumerable<MobileEvent> items2 = await eventTable.ToEnumerableAsync();
 
-
                 return new ObservableCollection<MobileEvent>(items);
-
-
             }
             catch (MobileServiceInvalidOperationException msioe)
             {
@@ -110,10 +104,9 @@ namespace DevEvent.Apps.Models
                     //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
                     //Use a different query name for each unique query in your program
                     "allPublishedItems",
+                    // 여기에서 Published 데이터만 가져오는 Query 작성 
                     eventTable.CreateQuery());
             }
-            
-            
             catch (MobileServicePushFailedException exc)
             {
                 if (exc.PushResult != null)
@@ -142,6 +135,22 @@ namespace DevEvent.Apps.Models
                     Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
                 }
             }
+        }
+
+        /// <summary>
+        /// Favorite 상태 변경
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="isfavorite"></param>
+        /// <returns></returns>
+        public async Task ToggleFavoriteEvent(MobileEvent item)
+        {
+            // Favorite 설정 변경
+            item.IsFavorite = !item.IsFavorite;
+            // 로컬에 저장
+            await SaveTaskAsync(item);
+            // 즉시 씽크 
+            await SyncAsync();
         }
     }
 }
