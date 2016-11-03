@@ -44,24 +44,7 @@ namespace DevEvent.Apps.Pages
                 {
                     //await Navigation.PushAsync()
                 }
-                /*if (e.SelectedItem is ViewModels.OrderViewModel)
-                {
-                    var list = e.SelectedItem as ViewModels.OrderViewModel;
-                    var modelList = e.SelectedItem as Models.Event;
-                    var eventDetailPage = new EventDetailPage(list.locationX, list.locationY, list.Venue, list.EventStartDay, list.ContentsURL, list.RegistrationURL, list.Audience);
-                    eventDetailPage.BindingContext = list;
-
-                    await Navigation.PushAsync(eventDetailPage);
-
-                }
-                else
-                {
-                    var list = e.SelectedItem as Models.Event;
-                    var eventDetailPage = new EventDetailPage(list.locationX, list.locationY, list.Venue, list.EventStartDay, list.ContentsURL, list.RegistrationURL, list.Audience);
-                    eventDetailPage.BindingContext = list;
-
-                    await Navigation.PushAsync(eventDetailPage);
-                } */               
+                   
             }
         }
 
