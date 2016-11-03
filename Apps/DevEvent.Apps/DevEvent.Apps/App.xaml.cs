@@ -14,12 +14,14 @@ namespace DevEvent.Apps
         public static NavigationPage Navigator { get; internal set; }
         public static MasterPage Master { get; internal set; }
 
+        public static IAuthenticate Authenticator { get; private set; }
+
         public App()
         {
             InitializeComponent();
 
+            Authenticator = DependencyService.Get<IAuthenticate>();
             MainPage = new DevEvent.Apps.Pages.MasterPage();
-           
         }
 
         protected override void OnStart()

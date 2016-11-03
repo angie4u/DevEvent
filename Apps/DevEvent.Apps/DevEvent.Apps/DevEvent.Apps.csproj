@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="IAuthenticate.cs" />
     <Compile Include="Infrastructure\InstanceLocator.cs" />
     <Compile Include="Models\MobileEvent.cs" />
     <Compile Include="Models\MobileEventManager.cs" />
