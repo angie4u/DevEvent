@@ -114,7 +114,7 @@ namespace DevEvent.Apps.Models
             get { return isFavorite; }
             set
             {
-                IsFavorite = value;
+                isFavorite = value;
                 OnPropertyChanged("IsFavorite");
             }
         }
