@@ -26,6 +26,10 @@ namespace DevEvent.Apps.Services
                 //case "PastEvent":
                 //    await Navigate(new PastEventPage());
                 //    break;
+
+                case "LoginPage":
+                    await Navigate(new LoginPage());
+                    break;
             }
         }
 

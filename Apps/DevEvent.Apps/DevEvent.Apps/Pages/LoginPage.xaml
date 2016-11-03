@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DevEvent.Apps.Pages.LoginPage">
-  <Button Text="Microsoft Account Login" Clicked="OnMicrosoftAccountLoginButtonClicked" />
-  <Button Text="Google Login" Clicked="OnGoogleLoginButtonClicked" />
-  <Button Text="Facebook Login" Clicked="OnFacebookLoginButtonClicked" />
-  <Label x:Name="messageLabel" />
+             x:Class="DevEvent.Apps.Pages.LoginPage" Title="Login Page">
+
+  <StackLayout Orientation="Vertical" Padding="8,8,8,0" HorizontalOptions="Center">
+    <Button Text="Microsoft Account Login" Clicked="OnMicrosoftAccountLoginButtonClicked" />
+    <Button Text="Google Login" Clicked="OnGoogleLoginButtonClicked" />
+    <Button Text="Facebook Login" Clicked="OnFacebookLoginButtonClicked" />
+    <Label x:Name="messageLabel" />
+  </StackLayout>
+
 </ContentPage>

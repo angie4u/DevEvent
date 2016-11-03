@@ -52,44 +52,42 @@ namespace DevEvent.Apps.Models
 
         public async Task<ObservableCollection<MobileEvent>> GetEventItemsAsync(bool syncItems = false)
         {
-            try
+            // true 일때 서버와 싱크하고 로컬에 저장
+            //  Unauth 같은 오류가 발생하면 호출하는 곳에서 처리
+            if (syncItems)
             {
-                if (syncItems)
-                {
-                    await SyncAsync();
-                }
-
-                var list = client.GetSyncTable<MobileEvent>();
-
-                IEnumerable<MobileEvent> items = await eventTable
-                                    .Where(x => x.PublishState == PublishState.Published)
-                                    .ToEnumerableAsync();
-
-                //var i = eventTable;
-                //IEnumerable<MobileEvent> items2 = await eventTable.ToEnumerableAsync();
-
-                return new ObservableCollection<MobileEvent>(items);
+                await SyncAsync();
             }
-            catch (MobileServiceInvalidOperationException msioe)
-            {
-                Debug.WriteLine(@"Invalid sync operation: {0}", msioe.Message);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(@"Sync error: {0}", e.Message);
-            }
-            return null;
+
+            // false 일때는 로컬에서만 가져옴. 
+            var list = client.GetSyncTable<MobileEvent>();
+
+            IEnumerable<MobileEvent> items = await eventTable
+                                .Where(x => x.PublishState == PublishState.Published)
+                                .ToEnumerableAsync();
+
+            //var i = eventTable;
+            //IEnumerable<MobileEvent> items2 = await eventTable.ToEnumerableAsync();
+
+            return new ObservableCollection<MobileEvent>(items);
         }
 
         public async Task SaveTaskAsync(MobileEvent item)
         {
-            if (item.Id == null)
+            try
             {
-                await eventTable.InsertAsync(item);
+                if (item.Id == null)
+                {
+                    await eventTable.InsertAsync(item);
+                }
+                else
+                {
+                    await eventTable.UpdateAsync(item);
+                }
             }
-            else
+            catch (Exception e)
             {
-                await eventTable.UpdateAsync(item);
+                Debug.WriteLine(@"Sync error: {0}", e.Message); 
             }
         }
 
@@ -100,20 +98,35 @@ namespace DevEvent.Apps.Models
             try
             {
                 await client.SyncContext.PushAsync();
+
                 await eventTable.PullAsync(
                     //The first parameter is a query name that is used internally by the client SDK to implement incremental sync.
                     //Use a different query name for each unique query in your program
                     "allPublishedItems",
-                    // 여기에서 Published 데이터만 가져오는 Query 작성 
                     eventTable.CreateQuery());
+            }
+            catch (MobileServiceInvalidOperationException msioe)
+            {
+                // 서버측에서 인증이 먼저 필요한 Method 의 경우 401 을 반환하게 된다. 
+                if (msioe.Response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedAccessException("Unauth access", msioe);
+                }
             }
             catch (MobileServicePushFailedException exc)
             {
                 if (exc.PushResult != null)
                 {
-                    syncErrors = exc.PushResult.Errors;
+                    // Authentication Error when push 
+                    if (exc.PushResult.Status == MobileServicePushStatus.CancelledByAuthenticationError)
+                    {
+                        throw new UnauthorizedAccessException("Unauth access when push", exc);
+                    }
                 }
-                
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("error: {0}",ex.ToString());
             }
 
             // Simple error/conflict handling. A real application would handle the various errors like network conditions,
@@ -135,22 +148,6 @@ namespace DevEvent.Apps.Models
                     Debug.WriteLine(@"Error executing sync operation. Item: {0} ({1}). Operation discarded.", error.TableName, error.Item["id"]);
                 }
             }
-        }
-
-        /// <summary>
-        /// Favorite 상태 변경
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="isfavorite"></param>
-        /// <returns></returns>
-        public async Task ToggleFavoriteEvent(MobileEvent item)
-        {
-            // Favorite 설정 변경
-            item.IsFavorite = !item.IsFavorite;
-            // 로컬에 저장
-            await SaveTaskAsync(item);
-            // 즉시 씽크 
-            await SyncAsync();
         }
     }
 }

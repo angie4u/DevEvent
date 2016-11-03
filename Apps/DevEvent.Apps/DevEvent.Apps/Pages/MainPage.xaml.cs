@@ -24,7 +24,23 @@ namespace DevEvent.Apps.Pages
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var items = await manager.GetEventItemsAsync(true);
+            ObservableCollection<MobileEvent> items = null;
+            try
+            {
+                // 데이터 Fetch
+                items = await manager.GetEventItemsAsync(true);
+            }
+            catch(UnauthorizedAccessException ex)
+            {
+                // 데이터 Fetch (Offline)
+                //items = await manager.GetEventItemsAsync(false);
+                //Navigation.InsertPageBefore(new LoginPage(), this);
+                //await Navigation.PopAsync();
+
+                var navigationService = new NavigationService();
+                navigationService.Navigate("LoginPage");
+            }
+            // databinding
             MyList.ItemsSource = items;
         }
      
@@ -39,6 +55,38 @@ namespace DevEvent.Apps.Pages
                            
             }
         }
+
+        async void FavoriteToggled(object sender, ToggledEventArgs e)
+        {
+            Switch favoriteSwitch = sender as Switch;
+            MobileEvent evt = favoriteSwitch.BindingContext as MobileEvent;
+            if (evt == null) return;
+
+            // This code is useless. Because two way binding set the value already. 
+            //evt.IsFavorite = e.Value;
+
+            try
+            {
+                // 로컬에 저장
+                await manager.SaveTaskAsync(evt);
+                // 즉시 씽크 
+                await manager.SyncAsync();
+            }
+            catch(UnauthorizedAccessException uex)
+            {
+                //Navigation.InsertPageBefore(new LoginPage(), this);
+                //await Navigation.PopAsync();
+
+                var navigationService = new NavigationService();
+                navigationService.Navigate("LoginPage");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
 
     }
 }

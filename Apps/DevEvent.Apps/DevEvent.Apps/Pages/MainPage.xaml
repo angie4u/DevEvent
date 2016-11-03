@@ -4,28 +4,55 @@
              x:Class="DevEvent.Apps.Pages.MainPage"
              BackgroundColor="{StaticResource BackgroundColor}"
              Title="Developer Event">
- <Grid>
+  <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"></RowDefinition>
       <RowDefinition Height="*"></RowDefinition>
     </Grid.RowDefinitions>
-    <StackLayout Orientation="Horizontal" Padding="8,8,8,0" HorizontalOptions="Center">     
+    <StackLayout Orientation="Horizontal" Padding="8,8,8,0" HorizontalOptions="Center">
       <Label
         x:Name ="Month"
         VerticalOptions="Center"
-        TextColor="{StaticResource FontColor}"></Label>      
+        TextColor="{StaticResource FontColor}"></Label>
     </StackLayout>
 
     <StackLayout Grid.Row="1" >
       <ListView
         SeparatorColor="#52656b"
         x:Name="MyList"
-        ItemTemplate="{StaticResource ShortListTemplate}"        
         ItemSelected="MyListView_ItemSelected"
         HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid Padding="8">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="*"></RowDefinition>
+                  <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout>
+                  <StackLayout Orientation="Horizontal">
+                    <Label FontAttributes="Bold" FontSize="16" VerticalOptions="Center" TextColor="{StaticResource FontColor}" Text="{Binding Title}"></Label>
+                    <!--<Button Text="Has Image" Image="heart.png" WidthRequest="30" HeightRequest="30" Clicked="FavoriteClicked"/>-->
+                    <Switch IsToggled="{Binding IsFavorite}" Toggled="FavoriteToggled" />
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal">
+                    <Label VerticalOptions="Center" TextColor="{StaticResource MainColor}" Text="{Binding StartDate, StringFormat='{0:yyyy/MM/dd HH:mm}'}"/>
+                    <Label VerticalOptions="Center" TextColor="{StaticResource MainColor}" Text="~"/>
+                    <Label VerticalOptions="Center" TextColor="{StaticResource MainColor}" Text="{Binding EndDate, StringFormat='{0:HH:mm}'}"/>
+                  </StackLayout>
+                  <Label VerticalOptions="Center" TextColor="{StaticResource FontColor}" Text="{Binding Venue}"></Label>
+                  <Label VerticalOptions="Center" TextColor="{StaticResource FontColor}" Text="{Binding Description}"></Label>
+                </StackLayout>
+                <Image WidthRequest="250" HeightRequest="150" VerticalOptions="Start" Source="{Binding ThumbnailImageUrl}" Grid.Row="1"></Image>
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+
       </ListView>
     </StackLayout>
-  </Grid>  
+  </Grid>
   <ContentPage.ToolbarItems>
   </ContentPage.ToolbarItems>
 </ContentPage>
