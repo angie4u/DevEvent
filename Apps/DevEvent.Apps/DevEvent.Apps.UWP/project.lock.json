@@ -2232,6 +2232,16 @@
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
         }
       },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        }
+      },
       "Xamarin.Forms/2.3.2.127": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -4560,6 +4570,16 @@
         },
         "runtime": {
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
+        }
+      },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
       "Xamarin.Forms/2.3.2.127": {
@@ -6931,6 +6951,16 @@
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
         }
       },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        }
+      },
       "Xamarin.Forms/2.3.2.127": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -9268,6 +9298,16 @@
         },
         "runtime": {
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
+        }
+      },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
       "Xamarin.Forms/2.3.2.127": {
@@ -11648,6 +11688,16 @@
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
         }
       },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        }
+      },
       "Xamarin.Forms/2.3.2.127": {
         "compile": {
           "lib/uap10.0/Xamarin.Forms.Core.dll": {},
@@ -13985,6 +14035,16 @@
         },
         "runtime": {
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
+        }
+      },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
       "Xamarin.Forms/2.3.2.127": {
@@ -16363,6 +16423,16 @@
         },
         "runtime": {
           "lib/netcore45/Microsoft.WindowsAzure.Messaging.Managed.dll": {}
+        }
+      },
+      "Xam.Plugin.Connectivity/2.2.12": {
+        "compile": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
+        },
+        "runtime": {
+          "lib/UAP10/Plugin.Connectivity.Abstractions.dll": {},
+          "lib/UAP10/Plugin.Connectivity.dll": {}
         }
       },
       "Xamarin.Forms/2.3.2.127": {
@@ -22975,6 +23045,72 @@
         "lib/wpa81/Microsoft.WindowsAzure.Messaging.Managed.pri"
       ]
     },
+    "Xam.Plugin.Connectivity/2.2.12": {
+      "sha512": "Y/R/GEF+Lo1CuO5NMb4GmjD8lfelDV3q18P+5i2ne3JREgHYcoeW2yYVVGou1Gi9K7SBkzoCYI6+7ioMCR0QkA==",
+      "type": "package",
+      "path": "Xam.Plugin.Connectivity/2.2.12",
+      "files": [
+        "Xam.Plugin.Connectivity.2.2.12.nupkg.sha512",
+        "Xam.Plugin.Connectivity.nuspec",
+        "lib/MonoAndroid10/Plugin.Connectivity.Abstractions.dll",
+        "lib/MonoAndroid10/Plugin.Connectivity.Abstractions.pdb",
+        "lib/MonoAndroid10/Plugin.Connectivity.Abstractions.xml",
+        "lib/MonoAndroid10/Plugin.Connectivity.dll",
+        "lib/MonoAndroid10/Plugin.Connectivity.pdb",
+        "lib/MonoAndroid10/Plugin.Connectivity.xml",
+        "lib/MonoTouch10/Plugin.Connectivity.Abstractions.dll",
+        "lib/MonoTouch10/Plugin.Connectivity.Abstractions.xml",
+        "lib/MonoTouch10/Plugin.Connectivity.dll",
+        "lib/MonoTouch10/Plugin.Connectivity.xml",
+        "lib/UAP10/Plugin.Connectivity.Abstractions.dll",
+        "lib/UAP10/Plugin.Connectivity.Abstractions.pdb",
+        "lib/UAP10/Plugin.Connectivity.Abstractions.xml",
+        "lib/UAP10/Plugin.Connectivity.dll",
+        "lib/UAP10/Plugin.Connectivity.pdb",
+        "lib/UAP10/Plugin.Connectivity.xml",
+        "lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll",
+        "lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.xml",
+        "lib/Xamarin.iOS10/Plugin.Connectivity.dll",
+        "lib/Xamarin.iOS10/Plugin.Connectivity.xml",
+        "lib/net45/Plugin.Connectivity.Abstractions.dll",
+        "lib/net45/Plugin.Connectivity.Abstractions.pdb",
+        "lib/net45/Plugin.Connectivity.Abstractions.xml",
+        "lib/net45/Plugin.Connectivity.dll",
+        "lib/net45/Plugin.Connectivity.pdb",
+        "lib/net45/Plugin.Connectivity.xml",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.Abstractions.dll",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.Abstractions.pdb",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.Abstractions.xml",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.dll",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.pdb",
+        "lib/portable-net45+wp80+wp81+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+Xamarin.Mac20+UAP10/Plugin.Connectivity.xml",
+        "lib/win8/Plugin.Connectivity.Abstractions.dll",
+        "lib/win8/Plugin.Connectivity.Abstractions.pdb",
+        "lib/win8/Plugin.Connectivity.Abstractions.xml",
+        "lib/win8/Plugin.Connectivity.dll",
+        "lib/win8/Plugin.Connectivity.pdb",
+        "lib/win8/Plugin.Connectivity.xml",
+        "lib/wp80/Plugin.Connectivity.Abstractions.dll",
+        "lib/wp80/Plugin.Connectivity.Abstractions.pdb",
+        "lib/wp80/Plugin.Connectivity.Abstractions.xml",
+        "lib/wp80/Plugin.Connectivity.dll",
+        "lib/wp80/Plugin.Connectivity.pdb",
+        "lib/wp80/Plugin.Connectivity.xml",
+        "lib/wp81/Plugin.Connectivity.Abstractions.dll",
+        "lib/wp81/Plugin.Connectivity.Abstractions.pdb",
+        "lib/wp81/Plugin.Connectivity.Abstractions.xml",
+        "lib/wp81/Plugin.Connectivity.dll",
+        "lib/wp81/Plugin.Connectivity.pdb",
+        "lib/wp81/Plugin.Connectivity.xml",
+        "lib/wpa81/Plugin.Connectivity.Abstractions.dll",
+        "lib/wpa81/Plugin.Connectivity.Abstractions.pdb",
+        "lib/wpa81/Plugin.Connectivity.Abstractions.xml",
+        "lib/wpa81/Plugin.Connectivity.dll",
+        "lib/wpa81/Plugin.Connectivity.pdb",
+        "lib/wpa81/Plugin.Connectivity.xml",
+        "readme.txt"
+      ]
+    },
     "Xamarin.Forms/2.3.2.127": {
       "sha512": "NYH2p6Z2QGrRZpRXSiLqtapqlsx11pkViEIjDUQFDvsMCZbvsipDXOWjV9sXTrruXTdkNZ24Nsw0lEG0jVRMjA==",
       "type": "package",
@@ -23188,6 +23324,7 @@
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
       "Newtonsoft.Json >= 9.0.1",
       "WindowsAzure.Messaging.Managed >= 0.1.7.9",
+      "Xam.Plugin.Connectivity >= 2.2.12",
       "Xamarin.Forms >= 2.3.2.127"
     ],
     "UAP,Version=v10.0": []

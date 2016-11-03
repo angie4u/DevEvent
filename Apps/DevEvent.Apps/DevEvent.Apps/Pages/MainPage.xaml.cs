@@ -8,6 +8,7 @@ using DevEvent.Apps.Models;
 
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using Plugin.Connectivity;
 
 namespace DevEvent.Apps.Pages
 {
@@ -27,8 +28,16 @@ namespace DevEvent.Apps.Pages
             ObservableCollection<MobileEvent> items = null;
             try
             {
-                // 데이터 Fetch
-                items = await manager.GetEventItemsAsync(true);
+                if (CrossConnectivity.Current.IsConnected == true && App.IsAuthenticated == true)
+                {
+                    // 온라인 이고 인증이 되었으므로 서버에서 (true) 데이터 Fetch
+                    items = await manager.GetEventItemsAsync(true);
+                }
+                else
+                {
+                    // 오프라인이므로 로컬 DB에서 데이터 가져옴
+                    items = await manager.GetEventItemsAsync(false);
+                }
             }
             catch(UnauthorizedAccessException ex)
             {

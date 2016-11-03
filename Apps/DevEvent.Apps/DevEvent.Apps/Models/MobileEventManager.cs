@@ -52,23 +52,15 @@ namespace DevEvent.Apps.Models
 
         public async Task<ObservableCollection<MobileEvent>> GetEventItemsAsync(bool syncItems = false)
         {
+            IEnumerable<MobileEvent> items = null;
             // true 일때 서버와 싱크하고 로컬에 저장
             //  Unauth 같은 오류가 발생하면 호출하는 곳에서 처리
             if (syncItems)
             {
                 await SyncAsync();
+                
             }
-
-            // false 일때는 로컬에서만 가져옴. 
-            var list = client.GetSyncTable<MobileEvent>();
-
-            IEnumerable<MobileEvent> items = await eventTable
-                                .Where(x => x.PublishState == PublishState.Published)
-                                .ToEnumerableAsync();
-
-            //var i = eventTable;
-            //IEnumerable<MobileEvent> items2 = await eventTable.ToEnumerableAsync();
-
+            items = await eventTable.ToEnumerableAsync();
             return new ObservableCollection<MobileEvent>(items);
         }
 
