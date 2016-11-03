@@ -13,7 +13,6 @@ using System.Linq;
 
 namespace DevEvent.Data.Models
 {
-    // ApplicationUser 클래스에 더 많은 속성을 추가하여 사용자에 대한 프로필 데이터를 추가할 수 있습니다. 자세히 알아보려면 http://go.microsoft.com/fwlink/?LinkID=317594를 방문하십시오.
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -63,6 +62,11 @@ namespace DevEvent.Data.Models
 
         public DbSet<Event> Events { get; set; }
 
+        /// <summary>
+        /// 모바일 User (login by 3rd party id provider) 
+        /// </summary>
+        public DbSet<MobileUser> MobileUsers { get; set; }
+
 
         public static ApplicationDbContext Create()
         {
@@ -91,12 +95,15 @@ namespace DevEvent.Data.Models
             modelBuilder.Entity<Event>().ToTable("Events");
             modelBuilder.Entity<Event>().Property(t => t.Title).IsRequired();
             modelBuilder.Entity<Event>().HasRequired(t => t.CreateUser).WithMany(t => t.Events).HasForeignKey(t => t.CreateUserId);
-            //modelBuilder.Entity<Event>().HasMany(t => t.RelatedLinks).WithRequired(t => t.Event).HasForeignKey(t => t.EventId);
 
-            //modelBuilder.Entity<EventRelatedLink>().ToTable("EventRelatedLinks");
-            //modelBuilder.Entity<EventRelatedLink>().Property(t => t.Url).IsRequired();
-            //modelBuilder.Entity<EventRelatedLink>().HasRequired(t => t.Event).WithMany(t => t.RelatedLinks).HasForeignKey(t => t.EventId);
-
+            // mobile user
+            modelBuilder.Entity<MobileUser>().ToTable("MobileUsers");
+            modelBuilder.Entity<MobileUser>().HasMany(t => t.Events).WithMany(x => x.FavoriteMobileUsers).Map(m =>
+            {
+                m.ToTable("EventMobileUser");
+                m.MapLeftKey("MobileUserId");
+                m.MapRightKey("EventId");
+            });
         }
     }
 }

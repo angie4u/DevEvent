@@ -17,9 +17,13 @@ namespace DevEvent.Apps.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+            
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            //global::Xamarin.FormsMaps.Init(this, bundle);
+
             LoadApplication(new App());
         }
     }

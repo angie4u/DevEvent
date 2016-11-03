@@ -129,5 +129,7 @@ namespace DevEvent.Data.Models
         /// 관련 링크들
         /// </summary>
         //public ICollection<EventRelatedLink> RelatedLinks { get; set; }
+
+        public virtual ICollection<MobileUser> FavoriteMobileUsers { get; set; }
     }
 }

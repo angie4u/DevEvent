@@ -4,49 +4,89 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevEvent.Apps.Models;
 
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace DevEvent.Apps.Pages
 {
     public partial class MainPage : ContentPage
     {
+        MobileEventManager manager;
+
         public MainPage()
         {
             InitializeComponent();
-            Month.Text = "행사 목록";
-            GetEventList();
+            manager = MobileEventManager.DefaultManager;
         }
 
-        async void GetEventList()
+        protected override async void OnAppearing()
         {
-            ApiService apiService = new ApiService();
-            var list = await apiService.GetAllEvent(DateTime.Now);
-
-            foreach (var item in list)
+            base.OnAppearing();
+            ObservableCollection<MobileEvent> items = null;
+            try
             {
-                string ImageURL = "img" + item.ImageNumber + ".png";
-                item.EventTitle = item.EventTitle;
-                item.EventStartDay = item.EventStartDay;
-                item.Description = item.Description;
-                //item.Image = ImageURL;
+                // 데이터 Fetch
+                items = await manager.GetEventItemsAsync(true);
             }
-            MyList.ItemsSource = list;
-        }
+            catch(UnauthorizedAccessException ex)
+            {
+                // 데이터 Fetch (Offline)
+                //items = await manager.GetEventItemsAsync(false);
+                //Navigation.InsertPageBefore(new LoginPage(), this);
+                //await Navigation.PopAsync();
 
+                var navigationService = new NavigationService();
+                navigationService.Navigate("LoginPage");
+            }
+            // databinding
+            MyList.ItemsSource = items;
+        }
+     
         //이벤트 정보 넘겨주는 코드 
         async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem != null)
             {
-                
-                if(e.SelectedItem is ViewModels.EventListViewModel)
-                {
-                    //await Navigation.PushAsync()
-                }
-                   
+                var eventDetailPage = new EventDetailPage();               
+                eventDetailPage.BindingContext = e.SelectedItem as MobileEvent;
+                await Navigation.PushAsync(eventDetailPage);
+                           
             }
         }
+
+        async void FavoriteToggled(object sender, ToggledEventArgs e)
+        {
+            Switch favoriteSwitch = sender as Switch;
+            MobileEvent evt = favoriteSwitch.BindingContext as MobileEvent;
+            if (evt == null) return;
+
+            // This code is useless. Because two way binding set the value already. 
+            //evt.IsFavorite = e.Value;
+
+            try
+            {
+                // 로컬에 저장
+                await manager.SaveTaskAsync(evt);
+                // 즉시 씽크 
+                await manager.SyncAsync();
+            }
+            catch(UnauthorizedAccessException uex)
+            {
+                //Navigation.InsertPageBefore(new LoginPage(), this);
+                //await Navigation.PopAsync();
+
+                var navigationService = new NavigationService();
+                navigationService.Navigate("LoginPage");
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
 
     }
 }

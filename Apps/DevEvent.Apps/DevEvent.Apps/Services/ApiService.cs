@@ -11,105 +11,38 @@ namespace DevEvent.Apps.Services
 {
     class ApiService
     {
-        public async Task<List<EventList>> GetAllEvent(DateTime today)
+        public async Task<List<MobileEvent>> GetMobileEvent()
         {
-            //DateTime today = DateTime.Now;
-
-
-            List<EventList> eventList = new List<EventList>();
+            List<MobileEvent> eventList = new List<MobileEvent>();
             HttpClient Client = new HttpClient();
-
-            //string param = today.ToString("yyyy-MM-dd");
-            string param = "2016-01-01";
-
-
-            Uri myUri = new Uri("http://sevenstars.azurewebsites.net/EventModels/getThisMonthEvent/" + param);
-
+            Uri myUri = new Uri("http://deveventdev.azurewebsites.net/api/Events?model.offset=0&model.limit=100&model.filter=2");
             HttpResponseMessage response = await Client.GetAsync(myUri);
             string jsonString = await response.Content.ReadAsStringAsync();
 
-            //JObject obj = JObject.Parse(jsonString);
-            JArray array = JArray.Parse(jsonString);
+            JObject obj = JObject.Parse(jsonString);
+            JArray array = (JArray)obj["Events"];
 
             int eventCount = array.Count;
 
             for (int i = 0; i < eventCount; i++)
             {
-                EventList e = new EventList();
+                MobileEvent e = new MobileEvent();
 
-                e.ID = array[i].Value<int>("ID");
-                e.EventTitle = array[i].Value<string>("EventTitle");
-                e.EventStartDay = array[i].Value<DateTime>("EventStartDay");
-                e.EventEndDay = array[i].Value<DateTime>("EventEndDay");
+                e.Id = array[i].Value<string>("Id");
+                e.Title = array[i].Value<string>("Title");
+                e.StartDate = array[i].Value<DateTime>("StartDate");
+                e.EndDate = array[i].Value<DateTime>("EndDate");
                 e.Venue = array[i].Value<string>("Venue");
-                e.locationX = array[i].Value<double>("locationX");
-                e.locationY = array[i].Value<double>("locationY");
                 e.Audience = array[i].Value<string>("Audience");
                 e.Description = array[i].Value<string>("Description");
-                e.Agenda = array[i].Value<string>("Agenda");
-                e.Speaker = array[i].Value<string>("Speaker");
-                e.RegistrationURL = array[i].Value<string>("RegistrationURL");
-                e.ContentsURL = array[i].Value<string>("ContentsURL");
-                e.ImageNumber = array[i].Value<int>("ImageNumber");
+                e.ThumbnailImageUrl = array[i].Value<string>("ThumbnailImageUrl");
 
                 eventList.Add(e);
-
             }
-
-
             return eventList;
-
+            
         }
-
-        public async Task<List<EventList>> GetPastEvent(DateTime today)
-        {
-            //DateTime today = DateTime.Now;
-
-
-            List<EventList> eventList = new List<EventList>();
-            HttpClient Client = new HttpClient();
-
-            //string param = today.ToString("yyyy-MM-dd");
-            string param = "2016-02-01";
-
-
-            Uri myUri = new Uri("http://sevenstars.azurewebsites.net/EventModels/getThisMonthEvent/" + param);
-
-            HttpResponseMessage response = await Client.GetAsync(myUri);
-            string jsonString = await response.Content.ReadAsStringAsync();
-
-            //JObject obj = JObject.Parse(jsonString);
-            JArray array = JArray.Parse(jsonString);
-
-            int eventCount = array.Count;
-
-            for (int i = 0; i < eventCount; i++)
-            {
-                EventList e = new EventList();
-
-                e.ID = array[i].Value<int>("ID");
-                e.EventTitle = array[i].Value<string>("EventTitle");
-                e.EventStartDay = array[i].Value<DateTime>("EventStartDay");
-                e.EventEndDay = array[i].Value<DateTime>("EventEndDay");
-                e.Venue = array[i].Value<string>("Venue");
-                e.locationX = array[i].Value<double>("locationX");
-                e.locationY = array[i].Value<double>("locationY");
-                e.Audience = array[i].Value<string>("Audience");
-                e.Description = array[i].Value<string>("Description");
-                e.Agenda = array[i].Value<string>("Agenda");
-                e.Speaker = array[i].Value<string>("Speaker");
-                e.RegistrationURL = array[i].Value<string>("RegistrationURL");
-                e.ContentsURL = array[i].Value<string>("ContentsURL");
-                e.ImageNumber = array[i].Value<int>("ImageNumber");
-
-                eventList.Add(e);
-
-            }
-
-
-            return eventList;
-
-        }
+      
 
     }
 }

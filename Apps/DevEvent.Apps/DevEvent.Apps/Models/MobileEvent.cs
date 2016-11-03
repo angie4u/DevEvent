@@ -1,18 +1,25 @@
-﻿using DevEvent.Data.Models;
-using Microsoft.Azure.Mobile.Server;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEvent.Data.DataObjects
+namespace DevEvent.Apps.Models
 {
-    public class MobileEvent : EntityData
+    public class MobileEvent : INotifyPropertyChanged
     {
-        [NotMapped]
-        public long EventId { get; set; }
+        private bool isFavorite;
+
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        [Version]
+        public string Version { get; set; }
+
+
         /// <summary>
         /// 배포(Publish) 
         /// </summary>
@@ -80,6 +87,14 @@ namespace DevEvent.Data.DataObjects
         /// </summary>
         public string FeaturedImageUrl { get; set; }
 
+        /// <summary>
+        /// 생성일
+        /// </summary>
+        public DateTimeOffset CreatedTime { get; set; }
+        /// <summary>
+        /// 수정일
+        /// </summary>
+        public DateTimeOffset? UpdatedTime { get; set; }
 
         /// <summary>
         ///  만든사람 이름
@@ -92,9 +107,32 @@ namespace DevEvent.Data.DataObjects
         public string CreateUserId { get; set; }
 
         /// <summary>
-        /// 
+        /// Favorite 인지 아닌지
         /// </summary>
-        public bool IsFavorite { get; set; }
+        public bool IsFavorite
+        {
+            get { return isFavorite; }
+            set
+            {
+                isFavorite = value;
+                OnPropertyChanged("IsFavorite");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        //private void OnPropertyChanged(string propertyName) =>
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        // Create the OnPropertyChanged method to raise the event
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
     }
 }
