@@ -42,51 +42,7 @@ namespace DevEvent.Apps.Services
             return eventList;
             
         }
-        public async Task<List<EventList>> GetAllEvent(DateTime today)
-        {
-            //DateTime today = DateTime.Now;
-
-
-            List<EventList> eventList = new List<EventList>();
-            HttpClient Client = new HttpClient();
-
-            //string param = today.ToString("yyyy-MM-dd");
-            string param = "2016-01-01";
-
-
-            Uri myUri = new Uri("http://sevenstars.azurewebsites.net/EventModels/getThisMonthEvent/" + param);
-
-            HttpResponseMessage response = await Client.GetAsync(myUri);
-            string jsonString = await response.Content.ReadAsStringAsync();
-
-            JObject obj = JObject.Parse(jsonString);
-            JArray array = (JArray)obj["Events"];
-            
-            int eventCount = array.Count;
-
-            for (int i = 0; i < eventCount; i++)
-            {
-                EventList e = new EventList();
-
-                //e.Id = array[i].Value<string>("Id");
-                //e.Title = array[i].Value<string>("Title");
-                //e.StartDate = array[i].Value<DateTime>("StartDate");
-                //e.EndDate = array[i].Value<DateTime>("EndDate");
-                e.Venue = array[i].Value<string>("Venue");
-                e.Audience = array[i].Value<string>("Audience");
-                e.Description = array[i].Value<string>("Description");
-                
-
-                eventList.Add(e);
-
-            }
-
-
-            return eventList;
-
-        }
-
-        
+      
 
     }
 }

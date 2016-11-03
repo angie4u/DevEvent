@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 namespace DevEvent.Apps.UWP
 {
     public sealed partial class MainPage
@@ -20,7 +21,7 @@ namespace DevEvent.Apps.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            
             LoadApplication(new DevEvent.Apps.App());
         }
     }
