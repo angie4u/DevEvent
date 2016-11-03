@@ -66,8 +66,8 @@ namespace DevEvent.Apps.ViewModels
             Menu.Add(new MenuItemViewModel()
             {
                 Icon = "ic_action_facebook",
-                Title = "Microsoft Developer",
-                PageName = "Microsoft Developer"
+                Title = "Login",
+                PageName = "LoginPage"
             });
 
         }
