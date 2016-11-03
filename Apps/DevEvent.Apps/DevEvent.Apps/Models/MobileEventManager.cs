@@ -54,6 +54,11 @@ namespace DevEvent.Apps.Models
         {
             try
             {
+                // if 온라인이면 SyncAsync();
+
+                // else 오프라인이면 
+                // 로컬디비에서 가져옴 eventTable
+
                 if (syncItems)
                 {
                     await SyncAsync();

@@ -19,15 +19,34 @@ namespace DevEvent.Apps.Pages
         {
             InitializeComponent();
             manager = MobileEventManager.DefaultManager;
+
+            if (manager.IsOfflineEnabled &&
+                (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone))
+            {
+                
+                syncButton.Clicked += OnSyncItems;
+                
+            }
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var items = await manager.GetEventItemsAsync(true);
-            MyList.ItemsSource = items;
+            await RefreshItems(syncItems: true);
         }
-     
+
+        public async void OnSyncItems(object sender, EventArgs e)
+        {
+            await RefreshItems(true);
+        }
+
+        private async Task RefreshItems(bool syncItems)
+        {
+            var items = await manager.GetEventItemsAsync(syncItems);
+            MyList.ItemsSource = items;
+
+        }
+
         //이벤트 정보 넘겨주는 코드 
         async void MyListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

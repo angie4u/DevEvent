@@ -13,7 +13,13 @@
       <Label
         x:Name ="Month"
         VerticalOptions="Center"
-        TextColor="{StaticResource FontColor}"></Label>      
+        TextColor="{StaticResource FontColor}"
+        Text="Event List"></Label>
+      <Button
+        Text="Sync Item"
+        VerticalOptions="End"
+        x:Name="syncButton">        
+      </Button>
     </StackLayout>
 
     <StackLayout Grid.Row="1" >
