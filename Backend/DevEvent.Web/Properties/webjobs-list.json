@@ -1,0 +1,11 @@
+﻿{
+  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+  "WebJobs": [
+    {
+      "filePath": "../../WebJobs/ThumbnailWebJob/ThumbnailWebJob.csproj"
+    },
+    {
+      "filePath": "../../WebJobs/PushNotificationWebJob/PushNotificationWebJob.csproj"
+    }
+  ]
+}
