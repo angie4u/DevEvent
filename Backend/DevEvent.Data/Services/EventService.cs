@@ -14,13 +14,15 @@ namespace DevEvent.Data.Services
     {
         private ApplicationDbContext DbContext;
         private IStorageService StorageService;
+        private IQueueService QueueService;
         private IThumbnailService ThumbnailService;
 
-        public EventService(ApplicationDbContext dbContext, IStorageService storageService, IThumbnailService thumbnailService)
+        public EventService(ApplicationDbContext dbContext, IStorageService storageService, IThumbnailService thumbnailService, IQueueService queueService)
         {
             this.DbContext = dbContext;
             this.StorageService = storageService;
             this.ThumbnailService = thumbnailService;
+            this.QueueService = queueService;
         }
 
         /// <summary>
@@ -187,19 +189,10 @@ namespace DevEvent.Data.Services
                 Id = Guid.NewGuid().ToString().ToLower()
             };
 
-            // TODO: RelatedLink,
             // Save Metadata
             this.DbContext.Events.Add(newevent);
-            try
-            {
-                await this.DbContext.SaveChangesAsync();
-            }
-            catch(Exception e)
-            {
-
-            }
+            await this.DbContext.SaveChangesAsync();
             
-
             // File Save
             var fileName = Path.GetFileName(model.FeaturedImageFile.FileName);
             var guid = Guid.NewGuid().ToString().ToLower();
@@ -207,7 +200,6 @@ namespace DevEvent.Data.Services
 
             var url = Path.Combine(this.StorageService.StorageBaseUrl, "images/" + guid, fileName);
             newevent.FeaturedImageUrl = url;
-            
 #if DEBUG
             // Make thumbnail and save itto the blob
             Image srcimg = Image.FromStream(model.FeaturedImageFile.InputStream);
@@ -220,7 +212,15 @@ namespace DevEvent.Data.Services
             var thumburl = Path.Combine(this.StorageService.StorageBaseUrl, "thumbs/" + guid, fileName);
             newevent.ThumbnailImageUrl = thumburl;
 #else
-            // TODO: Enqueue to make thumbnail
+            // Add Message to Queue to make thumbnail
+            ThumbnailQueueItem queueitem = new ThumbnailQueueItem
+            {
+                EventId = newevent.EventId,
+                FileName = fileName,
+                Guid = guid
+            };
+
+            await this.QueueService.AddMessageAsync("thumbrequestqueue", queueitem);  
 #endif
 
             // save again with image urls

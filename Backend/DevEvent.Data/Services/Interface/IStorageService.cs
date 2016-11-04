@@ -16,7 +16,7 @@ namespace DevEvent.Data.Services
         Task<bool> DeleteContainerAsync(string containerName);
         Task UploadBlobAsync(Stream fileStream, string blobNameToCreate, string containerName);
         IEnumerable<IListBlobItem> GetListBlobs(string containerName);
-        Task<FileStream> DownloadBlobAsStreamAsync(FileStream fileStream, string containerName, string blobName);
+        Task<Stream> DownloadBlobAsStreamAsync(Stream fileStream, string containerName, string blobName);
         Task<string> DownloadBlobContentAsStringAsync(string containerName, string blobName);
         Task<byte[]> DownloadBlobContentAsByteArrayAsync(string containerName, string blobName);
         Task DeleteBlobAsync(string containerName, string blobName);

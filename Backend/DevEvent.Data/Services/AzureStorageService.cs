@@ -99,13 +99,13 @@ namespace DevEvent.Data.Services
         /// <param name="blobName"></param>
         /// <returns></returns>
 
-        public async Task<FileStream> DownloadBlobAsStreamAsync(FileStream fileStream, string containerName, string blobName)
+        public async Task<Stream> DownloadBlobAsStreamAsync(Stream stream, string containerName, string blobName)
         {
             CloudBlobContainer container = blobClient.GetContainerReference(containerName);
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(blobName);
             // Save blob contents to a filestream.
-            await blockBlob.DownloadToStreamAsync(fileStream);
-            return fileStream;
+            await blockBlob.DownloadToStreamAsync(stream);
+            return stream;
         }
 
         /// <summary>

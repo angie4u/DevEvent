@@ -173,11 +173,13 @@
     <Compile Include="Models\EventRelatedLink.cs" />
     <Compile Include="Models\MobileUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AzureQueueService.cs" />
     <Compile Include="Services\AzureStorageService.cs" />
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Models\Enums\EventListFilter.cs" />
     <Compile Include="Services\Interface\IEventService.cs" />
     <Compile Include="Services\Interface\IMobileUserService.cs" />
+    <Compile Include="Services\Interface\IQueueService.cs" />
     <Compile Include="Services\Interface\IStorageService.cs" />
     <Compile Include="Services\Interface\IThumbnailService.cs" />
     <Compile Include="Services\MobileUserService.cs" />
@@ -187,6 +189,7 @@
     <Compile Include="ViewModels\EventListFilterViewModel.cs" />
     <Compile Include="ViewModels\EventListViewModel.cs" />
     <Compile Include="ViewModels\EventRelatedLinkViewModel.cs" />
+    <Compile Include="ViewModels\ThumbnailQueueItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
