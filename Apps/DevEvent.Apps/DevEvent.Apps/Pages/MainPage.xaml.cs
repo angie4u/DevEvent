@@ -8,6 +8,8 @@ using DevEvent.Apps.Models;
 
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 
 namespace DevEvent.Apps.Pages
 {
@@ -19,12 +21,32 @@ namespace DevEvent.Apps.Pages
         {
             InitializeComponent();
             manager = MobileEventManager.DefaultManager;
+            CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
+        }
+
+        private async void Current_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            if(!e.IsConnected)
+            {
+                //message
+                await DisplayAlert("Error", "Check for your connection", "OK");
+            }
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            
             ObservableCollection<MobileEvent> items = null;
+
+            //네트워크 상태 체크하는 코드 
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                //error message
+                await DisplayAlert("Error", "Check for your connection", "OK");
+            }
+
             try
             {
                 // 데이터 Fetch
