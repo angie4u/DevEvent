@@ -9,7 +9,6 @@ using DevEvent.Apps.Models;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Plugin.Connectivity;
-using Plugin.Connectivity.Abstractions;
 
 namespace DevEvent.Apps.Pages
 {
@@ -21,58 +20,35 @@ namespace DevEvent.Apps.Pages
         {
             InitializeComponent();
             manager = MobileEventManager.DefaultManager;
-            CrossConnectivity.Current.ConnectivityChanged += Current_ConnectivityChanged;
         }
-
-        
-
-        private async void Current_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
-        {
-            if(!e.IsConnected)
-            {
-                //message
-                await DisplayAlert("Error", "Check for your connection", "OK");
-            }
-        }
-
-
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            
             ObservableCollection<MobileEvent> items = null;
-
-            //네트워크 상태 체크하는 코드 
-            //네트워크가 연결되어 있지 않은 경우, 동작은 하지만 await 흐름 처리가 필요 
-            if (!CrossConnectivity.Current.IsConnected)
+            try
             {
-                items = await manager.GetEventItemsAsync(false);
+                if (CrossConnectivity.Current.IsConnected == true && App.IsAuthenticated == true)
+                {
+                    // 온라인 이고 인증이 되었으므로 서버에서 (true) 데이터 Fetch
+                    items = await manager.GetEventItemsAsync(true);
+                }
+                else
+                {
+                    // 오프라인이므로 로컬 DB에서 데이터 가져옴
+                    items = await manager.GetEventItemsAsync(false);
+                }
+            }
+            catch(UnauthorizedAccessException ex)
+            {
+                // 데이터 Fetch (Offline)
+                //items = await manager.GetEventItemsAsync(false);
                 //Navigation.InsertPageBefore(new LoginPage(), this);
                 //await Navigation.PopAsync();
 
+                var navigationService = new NavigationService();
+                navigationService.Navigate("LoginPage");
             }
-
-            else
-            {
-                try
-                {
-                    // 데이터 Fetch
-                    items = await manager.GetEventItemsAsync(true);
-                }
-                catch (UnauthorizedAccessException ex)
-                {
-                    // 데이터 Fetch (Offline)
-                    //items = await manager.GetEventItemsAsync(false);
-                    //Navigation.InsertPageBefore(new LoginPage(), this);
-                    //await Navigation.PopAsync();
-
-                    var navigationService = new NavigationService();
-                    navigationService.Navigate("LoginPage");
-                }
-            }
-            
             // databinding
             MyList.ItemsSource = items;
         }

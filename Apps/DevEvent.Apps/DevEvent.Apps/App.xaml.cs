@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
-
+﻿using Xamarin.Forms;
 using DevEvent.Apps.Pages;
+using DevEvent.Apps.Models;
+using Plugin.Connectivity;
 
 namespace DevEvent.Apps
 {
@@ -13,8 +9,10 @@ namespace DevEvent.Apps
     {
         public static NavigationPage Navigator { get; internal set; }
         public static MasterPage Master { get; internal set; }
-
         public static IAuthenticate Authenticator { get; private set; }
+        public static bool IsAuthenticated { get; set; }
+
+        MobileEventManager manager;
 
         public App()
         {
@@ -22,11 +20,20 @@ namespace DevEvent.Apps
 
             Authenticator = DependencyService.Get<IAuthenticate>();
             MainPage = new DevEvent.Apps.Pages.MasterPage();
+            manager = MobileEventManager.DefaultManager;
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            // 네트워크가 살아나면 Sync 한다. 
+            CrossConnectivity.Current.ConnectivityChanged += async (sender, args) =>
+            {
+                if (args.IsConnected == true)
+                {
+                    await manager.SyncAsync();
+                }
+            };
         }
 
         protected override void OnSleep()

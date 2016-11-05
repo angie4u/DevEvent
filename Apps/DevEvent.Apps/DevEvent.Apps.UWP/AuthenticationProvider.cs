@@ -2,9 +2,6 @@
 using DevEvent.Apps.UWP;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Xamarin.Forms;
@@ -19,7 +16,6 @@ namespace DevEvent.Apps.UWP
         public async Task<bool> AuthenticateAsync(MobileServiceAuthenticationProvider provider)
         {
             bool success = false;
-
             try
             {
                 if (user == null)
@@ -49,6 +45,7 @@ namespace DevEvent.Apps.UWP
                 if (user != null)
                 {
                     await MobileEventManager.DefaultManager.CurrentClient.LogoutAsync();
+
                     var dialog = new MessageDialog(string.Format("You are now logged out - {0}", user.UserId), "Logout");
                     await dialog.ShowAsync();
                 }
