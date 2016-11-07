@@ -61,7 +61,7 @@ namespace DevEvent.Apps.Models
         /// </summary>
         public double? Latitude { get; set; }
 
-        /// <summary>
+        ///// <summary>
         /// 경도
         /// </summary>
         public double? Longitude { get; set; }
