@@ -39,7 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
-    <Compile Include="IAuthenticate.cs" />
+    <Compile Include="Services\IAuthenticate.cs" />
     <Compile Include="Infrastructure\InstanceLocator.cs" />
     <Compile Include="Models\MobileEvent.cs" />
     <Compile Include="Models\MobileEventManager.cs" />
@@ -75,7 +75,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>

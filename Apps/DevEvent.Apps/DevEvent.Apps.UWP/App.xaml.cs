@@ -18,6 +18,10 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Networking.PushNotifications;
 using Microsoft.WindowsAzure.Messaging;
 using Windows.UI.Popups;
+using Newtonsoft.Json.Linq;
+using DevEvent.Apps.Models;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Threading.Tasks;
 
 namespace DevEvent.Apps.UWP
 {
@@ -41,7 +45,7 @@ namespace DevEvent.Apps.UWP
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             //InitNotificationsAsync();
 #if DEBUG
@@ -82,6 +86,8 @@ namespace DevEvent.Apps.UWP
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            await InitNotificationsAsync();
         }
 
         /// <summary>
@@ -108,21 +114,29 @@ namespace DevEvent.Apps.UWP
             deferral.Complete();
         }
 
-        private async void InitNotificationsAsync()
+        /// <summary>
+        /// Push Notification 초기화 코드 
+        /// </summary>
+        /// <returns></returns>
+        private async Task InitNotificationsAsync()
         {
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
 
-            var hub = new NotificationHub("sevenstarshub", "Endpoint=sb://sevenstarshub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=IObIZR7wHCvcQH4uBJ7NkyOLaYX3HgNaUzVJKomBJ/c=");
-            var result = await hub.RegisterNativeAsync(channel.Uri);
+            const string templateBodyWNS =
+                "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
 
-            // Displays the registration ID so you know it was successful
-            //if (result.RegistrationId != null)
-            //{
-            //    var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
-            //    dialog.Commands.Add(new UICommand("OK"));
-            //    await dialog.ShowAsync();
-            //}
+            JObject headers = new JObject();
+            headers["X-WNS-Type"] = "wns/toast";
 
+            JObject templates = new JObject();
+            templates["genericMessage"] = new JObject
+            {
+                {"body", templateBodyWNS},
+                {"headers", headers} // Needed for WNS.
+            };
+
+            // 템플릿과 채널로 Mobile App에 연결된 Notification Hub 에 등록 한다. 
+            await MobileEventManager.DefaultManager.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
         }
 
     }
