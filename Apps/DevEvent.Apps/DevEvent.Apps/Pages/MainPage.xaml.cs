@@ -41,8 +41,8 @@ namespace DevEvent.Apps.Pages
             }
             catch(UnauthorizedAccessException ex)
             {
-                var navigationService = new NavigationService();
-                navigationService.Navigate("LoginPage");
+                //var navigationService = new NavigationService();
+                //navigationService.Navigate("LoginPage");
             }
 
             // Databinding
@@ -78,8 +78,8 @@ namespace DevEvent.Apps.Pages
             }
             catch(UnauthorizedAccessException uex)
             {
-                var navigationService = new NavigationService();
-                navigationService.Navigate("LoginPage");
+                //var navigationService = new NavigationService();
+                //navigationService.Navigate("LoginPage");
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace DevEvent.Apps.Pages
             }
 
             // Push Notification 등록
-            RegisterPushNotification("event_" + evt.Id);
+            //RegisterPushNotification("event_" + evt.Id);
         }
 
         private void RegisterPushNotification(string tag)

@@ -45,23 +45,23 @@ namespace DevEvent.Apps.ViewModels
             Menu.Add(new MenuItemViewModel()
             {
                 Icon = "ic_action_home",
-                Title = "Home",
+                Title = "Events",
                 PageName = "MainPage"
             });
 
-            Menu.Add(new MenuItemViewModel()
-            {
-                Icon = "ic_action_home",
-                Title = "PastEvent",
-                PageName = "PastEvent"
-            });
+            //Menu.Add(new MenuItemViewModel()
+            //{
+            //    Icon = "ic_action_home",
+            //    Title = "PastEvent",
+            //    PageName = "PastEvent"
+            //});
 
-            Menu.Add(new MenuItemViewModel()
-            {
-                Icon = "ic_action_home",
-                Title = "관심행사",
-                PageName = "MainPage"
-            });
+            //Menu.Add(new MenuItemViewModel()
+            //{
+            //    Icon = "ic_action_home",
+            //    Title = "관심행사",
+            //    PageName = "MainPage"
+            //});
 
             Menu.Add(new MenuItemViewModel()
             {
