@@ -23,8 +23,7 @@ namespace DevEvent.Apps.Models
             var store = new MobileServiceSQLiteStore("localstore.db");
             store.DefineTable<MobileEvent>();            
             client.SyncContext.InitializeAsync(store);
-            // 로컬 SQLite에서 데이터 가져온다. 
-            // 아직은 로컬 데이터이고 SyncAsync() 를 해야만 서버측 데이터가 싱크
+
             eventTable = client.GetSyncTable<MobileEvent>();     
         }
 

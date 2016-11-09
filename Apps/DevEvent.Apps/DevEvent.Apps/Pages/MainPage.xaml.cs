@@ -41,15 +41,11 @@ namespace DevEvent.Apps.Pages
             }
             catch(UnauthorizedAccessException ex)
             {
-                // 데이터 Fetch (Offline)
-                //items = await manager.GetEventItemsAsync(false);
-                //Navigation.InsertPageBefore(new LoginPage(), this);
-                //await Navigation.PopAsync();
-
                 var navigationService = new NavigationService();
                 navigationService.Navigate("LoginPage");
             }
-            // databinding
+
+            // Databinding
             MyList.ItemsSource = items;
         }
      
@@ -64,7 +60,6 @@ namespace DevEvent.Apps.Pages
                            
             }
         }
-
         async void FavoriteToggled(object sender, ToggledEventArgs e)
         {
             Switch favoriteSwitch = sender as Switch;
@@ -83,9 +78,6 @@ namespace DevEvent.Apps.Pages
             }
             catch(UnauthorizedAccessException uex)
             {
-                //Navigation.InsertPageBefore(new LoginPage(), this);
-                //await Navigation.PopAsync();
-
                 var navigationService = new NavigationService();
                 navigationService.Navigate("LoginPage");
             }
@@ -102,8 +94,5 @@ namespace DevEvent.Apps.Pages
         {
             App.NotificationRegister.Register(tag);
         }
-
-
-
     }
 }
