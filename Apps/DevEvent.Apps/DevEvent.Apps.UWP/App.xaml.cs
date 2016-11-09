@@ -30,6 +30,9 @@ namespace DevEvent.Apps.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        public static PushNotificationChannel PushChannel;
+        public static JObject PushTemplate;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -47,7 +50,6 @@ namespace DevEvent.Apps.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            //InitNotificationsAsync();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -121,9 +123,9 @@ namespace DevEvent.Apps.UWP
         private async Task InitNotificationsAsync()
         {
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+            App.PushChannel = channel;
 
-            const string templateBodyWNS =
-                "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
+            string templateBodyWNS = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
 
             JObject headers = new JObject();
             headers["X-WNS-Type"] = "wns/toast";
@@ -135,8 +137,10 @@ namespace DevEvent.Apps.UWP
                 {"headers", headers} // Needed for WNS.
             };
 
+            App.PushTemplate = templates;
+
             // 템플릿과 채널로 Mobile App에 연결된 Notification Hub 에 등록 한다. 
-            await MobileEventManager.DefaultManager.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
+            await MobileEventManager.DefaultManager.CurrentClient.GetPush().RegisterAsync(App.PushChannel.Uri, App.PushTemplate);
         }
 
     }
