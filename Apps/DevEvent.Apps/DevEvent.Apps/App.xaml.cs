@@ -10,6 +10,7 @@ namespace DevEvent.Apps
         public static NavigationPage Navigator { get; internal set; }
         public static MasterPage Master { get; internal set; }
         public static IAuthenticate Authenticator { get; private set; }
+        public static INotificationRegister NotificationRegister { get; private set; }
         public static bool IsAuthenticated { get; set; }
 
         MobileEventManager manager;
@@ -19,6 +20,7 @@ namespace DevEvent.Apps
             InitializeComponent();
 
             Authenticator = DependencyService.Get<IAuthenticate>();
+            NotificationRegister = DependencyService.Get<INotificationRegister>();
             MainPage = new DevEvent.Apps.Pages.MasterPage();
             manager = MobileEventManager.DefaultManager;
         }

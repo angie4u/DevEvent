@@ -93,6 +93,14 @@ namespace DevEvent.Apps.Pages
             {
 
             }
+
+            // Push Notification 등록
+            RegisterPushNotification("event_" + evt.Id);
+        }
+
+        private void RegisterPushNotification(string tag)
+        {
+            App.NotificationRegister.Register(tag);
         }
 
 
