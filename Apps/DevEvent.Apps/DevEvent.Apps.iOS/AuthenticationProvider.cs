@@ -11,6 +11,9 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(AuthenticationProvider))]
 namespace DevEvent.Apps.iOS
 {
+    /// <summary>
+    /// 로그인 from iOS
+    /// </summary>
     public class AuthenticationProvider : IAuthenticate
     {
         MobileServiceUser user;

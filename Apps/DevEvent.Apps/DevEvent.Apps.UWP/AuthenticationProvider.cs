@@ -13,6 +13,11 @@ namespace DevEvent.Apps.UWP
     {
         MobileServiceUser user;
 
+        /// <summary>
+        /// 로그인 form Windows 10 UWP
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public async Task<bool> AuthenticateAsync(MobileServiceAuthenticationProvider provider)
         {
             bool success = false;
@@ -37,6 +42,10 @@ namespace DevEvent.Apps.UWP
             return success;
         }
 
+        /// <summary>
+        /// 로그아웃 from windows 10 UWP
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> LogoutAsync()
         {
             bool success = false;

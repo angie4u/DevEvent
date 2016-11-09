@@ -14,6 +14,11 @@ namespace DevEvent.Apps.Droid
     {
         MobileServiceUser user;
 
+        /// <summary>
+        /// 로그인 form Android
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public async Task<bool> AuthenticateAsync(MobileServiceAuthenticationProvider provider)
         {
             bool success = false;
@@ -36,6 +41,10 @@ namespace DevEvent.Apps.Droid
             return success;
         }
 
+        /// <summary>
+        /// 로그아웃 from Android
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> LogoutAsync()
         {
             bool success = false;
